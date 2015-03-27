@@ -1,0 +1,181 @@
+/*----------primary links---located in header----------*/
+#menu {
+	color:#ffffff;
+	width: 100%;
+	margin: 0 auto;
+	height: 30px;
+	padding: 0;
+	z-index: 10;
+	text-align: left;
+	white-space: nowrap;
+}
+ul.nice-menu, ul.nice-menu ul {
+    z-index: 95;
+}
+
+ul.nice-menu {
+	list-style: none;
+	padding: 0;
+	margin: 1px 0 0 0;
+}
+#navigation ul.nice-menu ul {
+	margin-top:1px;
+}
+
+ul.nice-menu li {
+	border-top: 0;
+	float: left;
+	margin: 0;
+	padding-left: 0;
+	background-image: none;
+}
+
+#header-region ul.nice-menu li {
+	margin: 0;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+ul.nice-menu li ul {
+	background-color:#910F0F;
+	padding: 0;
+	margin:5px 0 0 0;
+	font-size: 8pt;
+	line-height: 10pt;
+	border-bottom: 2px solid #000000;
+}
+
+ul.nice-menu a {
+	padding: 9px 12px 11px 10px;
+	color: #ffffff;
+}
+
+ul.nice-menu ul,
+#header-region ul.nice-menu ul {
+	top: 38px;
+	left: -1px;
+	border: 0;
+	margin-right: 0;
+}
+
+#header-region ul.nice-menu ul {
+	top: 1.7em;
+}
+
+ul.nice-menu ul li {
+	width: 23.0em;
+}
+
+ul.nice-menu a:hover {
+	background: #9C301F;
+	text-decoration: underline;
+	border: none;
+}
+
+/******************************
+HORIZONTAL (down) menus
+******************************/
+ul.nice-menu-down {
+	float: left;
+	border: 0;
+}
+
+ul.nice-menu-down li {
+}
+
+ul.nice-menu-down li li {
+	border-top: 0;
+}
+
+ul.nice-menu-down ul {
+	left: 0;
+}
+
+ul.nice-menu-down ul li {
+	clear: both;
+}
+
+ul.nice-menu-down li ul li ul {
+	left: 23.0em;
+	top: 0;
+}
+
+ul.nice-menu-down .menuparent a {
+	padding-right: 16px;
+	color: #ffffff;
+}
+
+ul.nice-menu-down li.menuparent {
+	background: url(../images/menu_downarrow_gray.png) right center no-repeat;
+}
+
+ul.nice-menu-down li.menuparent:hover,
+ul.nice-menu-down li.over {
+	background: #9C301F url(../images/menu_downarrow_gray.png) right center no-repeat;
+}
+
+ul.nice-menu-down li li.menuparent {
+	background: url(../images/menu_downarrow_gray.png) right center no-repeat;
+}
+
+ul.nice-menu-down li li.menuparent:hover,
+ul.nice-menu-down li li.over {
+	background: #9C301F url(../images/menu_downarrow_gray.png) right center no-repeat;
+}
+
+/******************************
+VERTICAL (left/right) menus
+******************************/
+ul.nice-menu-right, ul.nice-menu-left,
+ul.nice-menu-right li, ul.nice-menu-left li {
+/*	width: 12.5em; */
+}
+
+ul.nice-menu-right ul {
+}
+
+ul.nice-menu-right ul ul {
+	width: 12.5em;
+	left: 12.5em;
+	top: -1px;
+}
+
+ul.nice-menu-right li.menuparent,
+ul.nice-menu-right li li.menuparent {
+	background: #eee url(../images/arrow-right.png) right center no-repeat;
+}
+
+ul.nice-menu-right li.menuparent:hover,
+ul.nice-menu-right li.over,
+ul.nice-menu-right li li.menuparent:hover,
+ul.nice-menu-right li li.over {
+	background: #ccc url(../images/arrow-right.png) right center no-repeat;
+}
+
+ul.nice-menu-left li ul {
+	width: 12.5em;
+	left: -12.65em;
+	top: -1px;
+}
+
+ul.nice-menu-left li ul li ul {
+	width: 12.5em;
+	left: -12.65em;
+	top: -1px;
+}
+
+ul.nice-menu-left li.menuparent,
+ul.nice-menu-left li li.menuparent {
+	background: #eee url(../images/arrow-left.png) left center no-repeat;
+}
+
+ul.nice-menu-left li.menuparent:hover,
+ul.nice-menu-left li.over,
+ul.nice-menu-left li li.menuparent:hover,
+ul.nice-menu-left li li.over {
+	background: #ccc url(../images/arrow-left.png) left center no-repeat;
+}
+
+ul.nice-menu-left a, ul.nice-menu-left ul a {
+	padding-left: 14px;
+}

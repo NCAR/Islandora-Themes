@@ -1,0 +1,29 @@
+.atmos_imgcaption {
+	text-align: center;
+}
+.atmos_imgcaption_wrapper {
+	border: none;
+	padding: 0;
+	margin: 0;
+	width: auto;
+	float: none;
+	clear: both;
+	margin: 10px;
+}
+.atmos_imgcaptionTXT {
+	padding:4px;
+	color: #000000;
+	text-align: left;
+}
+.clearboth {
+}
+.floatl {
+	float: left;
+	clear: left;
+	margin-right: 1em;
+}
+.floatr {
+	float: right;
+	clear: right;
+	margin-left: 1em;
+}

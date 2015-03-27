@@ -1,0 +1,310 @@
+/* layout */
+.box_150 {
+	width:150px !important;	 
+ }
+.box_250 {
+	width:250px !important;	 
+ }
+.box_300 {
+	width:325px;	
+ }
+ .box_flex{
+	display:inline-block;	 
+	margin-right:30px;
+	width"100px;
+	border:1px solid #fff;
+	
+ }
+.float_left {
+ 	float:left;
+}
+.float_right {
+ 	float:right;
+}
+.clear {
+	clear:both;	
+}
+
+
+/* end layout */
+
+/* layout override */
+p {
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+li {
+	margin-top: 5px;
+    margin-bottom: 5px;	
+}
+#center-wrapper .block h2 {
+	padding:0;
+	padding: 4px 8px;
+}
+.pane-content .lightblock {
+	padding:0 2px 5px 2px;	
+}
+/* end layout override */
+
+/* tinymce editor override */
+table.mceLayout body {
+	border:1px solid red;
+	background:none;
+	padding:0;
+}
+
+/* end tinymce editor override */
+/* override footer layout styles */
+
+.footernav, .footernav #orgFooter {
+	color:#fff !important;
+	padding:10px !important;
+}
+/* override footer layout styles */
+
+/* menu mods */
+li a.active {
+	color:	#0075BF;
+}
+
+li.menu-4424  {
+	background: url(../images/button_remoteaccess.png) !important;	
+	background-repeat: no-repeat !important;
+	background-position: 100% -100% !important;
+	width:150px;
+}
+
+/* end menu mods */
+/* headers */
+h2 {
+	padding: 4px 8px;
+}
+h2 a, h2 a:hover {
+	color:#fff;	
+}
+h3, h4, h5, h6 {
+	padding-left:0;	
+}
+
+/*end headers */
+
+
+/* homepage mods */
+
+.panels-flexible-region-4-center div.pane-content  {
+	background-color:#efefef;	
+	padding:0 4px;
+}
+.panels-flexible-region-4-center div.pane-content ul {
+	margin-left:0px;
+	padding-left:15px;
+}
+.panels-flexible-region-4-center div.pane-content li {
+	border-bottom: 1px solid #adadad;	
+	margin-left:0;
+}
+/* end homepage mods */
+
+/* fancy image borders */
+img.frame {
+	border: 1px solid #ABABAB;	
+}
+.img_frame {
+    border: 1px solid #CCCCCC;
+    background-color: #fff;
+	padding: 5px;
+	display:inline-block;
+	margin:10px;
+}
+/* end fancy image border */
+/* other image effects*/
+.resources_logo {
+	border:1px solid #ccc;
+	padding:10px;
+	margin-right:20px;	
+	margin-bottom:20px;
+}
+/* end other image effects*/
+th, td {
+	
+	padding: 5px 10px;
+	margin:5px;
+}
+td {
+	vertical-align:top;	
+	border-bottom: 1px solid #ccc;
+}
+th {
+	color:#fff;
+	background-color:#163B69;
+}
+ul {
+	margin-top:10px;
+	margin-bottom:20px;	
+	clear:both;
+}
+li {
+	line-height:1.5em;	
+}
+table  h3 {
+	background-color:transparent;
+	color:	#910f0f;
+	font-family:UbuntuBold;
+	padding-left:0;
+}
+table {
+	border-collapse:separate;
+	border-spacing: 3px;
+}
+table.locations th, table.locations td {
+	width:50%;	
+}
+
+/* faq */
+.faq-question {
+	padding-left:0;	
+}
+.faq-question a {
+	font-family:UbuntuBold;
+	font-size:1.2em;
+}
+.faq-answer {
+	padding-left:10px;	
+}
+.faq-answer ul.links {
+	margin-bottom:20px;	
+	margin-top:10px;
+	display:block;
+	margin-left:0;
+}
+.faq-answer ul.inline li {
+	padding:none;
+	display:block;	
+}
+.faq-answer ul.links a, .node-readmore a {
+	border:1px solid #ccc;	
+	padding:5px 10px;
+	margin-top:20px;
+	display:inline-block;
+	-moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: url("images/buttons.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    border-color: #E4E4E4 #D2D2D2 #B4B4B4;
+    border-image: none;
+    border-radius: 20px 20px 20px 20px;
+    border-style: solid;
+    border-width: 1px;
+    color: #5A5A5A;
+    cursor: pointer;
+    font-family: "Lucida Grande",Verdana,sans-serif;
+    font-size: 1.077em;
+    font-weight: normal;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    padding: 4px 17px;
+    text-align: center;
+    background-color: #efefef;
+}
+.node-faq h2, .node-faq h2 a {
+	color:#fff;	
+}
+
+/* end faq */
+
+/* ill form */
+form#webform-client-form-83 {
+	
+}
+form#webform-client-form-83 legend {
+	font-family:UbuntuBold;
+	font-size:1.2em;	
+}
+form#webform-client-form-83 label{
+	width:250px;
+	text-align:right;
+	display:inline-block;
+}
+
+div#webform-component-copyright-notice-and-fair-use--please-check-i-have-read-and-agree-that-my-copy-request-conforms-to-this-fair-use-law label {
+	width:100%;
+	display:inline;	
+}
+/* end ill form */
+
+/* contacts and profile */
+.fullphone {
+	display:none;	
+}
+.shortphone {
+	display:inline;	
+}
+#contact_list tr:hover {
+	background-color:#ff9900;	
+}
+.profile_label {
+	font-family:UbuntuBold;
+	text-align:right;
+	width:75px;	
+	display:inline-block;
+	margin-right:10px;
+}
+/* end contacts */
+
+/* ask a contact box */
+.aska-contact-box {
+		background-color:#eee;	
+		width:260px;
+		margin:0;
+		border:3px solid #0075BF;
+		padding:0;
+		border-bottom-right-radius:30px;
+		float:right
+	}
+	.aska-contact-box h1 {
+		margin:0;
+		background-color: #0075BF;	
+		color: #fff;
+		padding-left:10px;
+		border-radius:0px;
+		font-size: 1.1em;
+	}
+	.aska-contact-box p {
+		padding:0;
+		padding-top:4px;
+		padding-left:10px;	
+	}
+	.aska-contact-box-sidebar {
+		background-color:#eee;	
+		width:195px;
+		margin:0;
+		padding:0;
+
+	}
+	.aska-contact-box-sidebar h2 {	
+		color: #fff;
+		padding-left:10px;
+	}
+	.aska-contact-box-sidebar h2{
+		color:#000;
+	}
+	.aska-contact-box-sidebar ul {
+		margin-bottom:10px;	
+	}
+	.aska-contact-box-helppage {
+		background-color:#eee;	
+		width:341px;
+		margin:0;
+		padding:0;
+		float:right;
+		border:3px solid #0075BF;
+	}
+	.aska-contact-box-helppage h2 {
+		background-color: #0075BF;	
+		color: #fff;
+		border-radius:0px;
+		margin-top:0;
+	}
+	/* ask a contact box */

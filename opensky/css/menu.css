@@ -1,0 +1,115 @@
+#nav_main_wrap {
+	z-index:5;
+		position:relative;
+		padding:0;
+		margin:0;
+		height:30px;
+		background: #025081;
+		letter-spacing: 2px;
+		color:#fff;
+		font-weight:normal;
+		font-family: "UbuntuBold","Lucida Grande",Verdana,Arial, and sans-serif;
+		text-transform: uppercase;
+		border-bottom:2px solid #025081;
+	}
+
+/* for main menu */
+ul.topnav, ul.topnavmobile {
+	list-style: none;
+	padding: 0;	
+	margin: 0;
+	float: left;
+	background-color:#163B69;
+	border-top:2px solid #025081;
+}
+ul.topnav li, ul.topnavmobile li{
+	float: left;
+	margin: 0;
+	background-color:#025081;
+	position: relative; /*--Declare X and Y axis base--*/
+}
+ul.topnav li a, ul.topnavmobile li a{
+	padding: 6px 25px 6px 5px;
+	color: #fff;
+	display: block;
+	text-decoration: none;
+	float: left;
+	height:18px;
+}
+.topnavmobile {
+	font-size:.95em;	
+}
+.topnavmobile ul {
+	font-size:1.1em;	
+}
+.topnavmobile img {
+	border:0;
+	margin:0;
+	margin-top:-5px;	
+}
+ul.topnavmobile li a{
+	padding:5px 2px;
+	padding-right:10px;
+	letter-spacing:1px;
+}
+ul.topnav a:active,ul.topnavmobile a:active{
+	background-color:	#0075BF;
+}
+ul.topnav li span { /*--Drop down trigger styles--*/
+	top:0;
+	width:17px;
+}
+.subnav {
+	font-size: 1em;	
+	font-family: UbuntuRegular, "Lucida Grande",Verdana,Arial, sans-serif;
+}
+ul.topnav li span.subhover {background-position: center bottom; cursor: pointer;} /*--Hover effect for trigger--*/
+ul.topnav li ul.subnav {
+	list-style-type: none;
+	position: absolute; /*--Important - Keeps subnav from affecting main navigation flow--*/
+	left: 0; top: 30px;
+	margin: 0; 
+	padding: 0;
+	display: none;
+	float: left;
+	width: 240px;
+	background-color:#163B69;
+	color:#ff9900;
+	font-weight:normal;
+}
+ul.topnav li ul.subnav li a{
+	padding:0;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+ul.topnav li ul.subnav li{
+	margin: 0; 
+	padding: 0;
+	clear: both;
+	color:#fff;
+}
+
+html ul.topnav li ul.subnav li a {
+	float: left;
+	width: 235px;
+	padding-left: 5px;
+	border-bottom: 1px solid #163B69;
+	font-weight:normal;
+	/*text-transform: capitalize;*/
+	text-transform: none;
+	letter-spacing: 1px;
+}
+
+
+/* attempt third tier */
+
+ul.subnav li span { /*--Drop down trigger styles--*/
+	float: right;
+}
+
+ul.topnav li a.active,ul.topnavmobile a.active {
+	color:#ff9900 !important;
+}
+ul.topnav li a:hover,ul.topnavmobile a:hover {
+	color:#ff9900 !important;
+}

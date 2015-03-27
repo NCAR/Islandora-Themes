@@ -1,0 +1,167 @@
+/*
+ * Style sheet for Drupal 7 Atmos theme integration with the color module
+ *
+ * NOTE: I intentionaly did not use hash mark with the RGB values within
+ * the notes because that will cause the color module to send error messages.
+ * 
+ * Important to know that the color module will generate a new css file
+ * locate at sites/default/files/color/theme_name-randomhash
+ * The color module looks for the color values of css classes (hexadecimal values)
+ * in this style sheet and compares them to the default color values set in the 
+ * color.inc file - $info[schemes][default][colors] values
+ * 
+ * Example: if $info[schemes][default][colors][top] us set to RGB af2220, any css class defined
+ * below with a color, be it background, background-color, color, etc, set to  RGB af2220 
+ * will be replaced with the new "top", or "Header top" field, color set by the user
+ * using the color admin page.
+ * 
+ * To avoid unwanted color changes, you can slightly modify the hexadecimal value
+ * of colors, for example use fffeff rather than ffffff
+ */
+
+/* ---------- Color Module Styles ----------- */
+
+body,
+body.overlay {
+  color: #333333;
+}
+h2,
+h2 a{
+  color: #910f0f;
+}
+.comment .comment-arrow {
+  border-color: #ffffff;
+}
+#page,
+#main-wrapper,
+#main-menu-links li a.active,
+#main-menu-links li.active-trail a {
+  background-color: #ffffff;
+}
+#header .block-menu li {
+  background: none !important;
+  border-right: 2px solid #a42220;
+}
+.tabs ul.primary li a.active {
+  background-color: #ffffff;
+}
+.tabs ul.primary li.active a {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+#header {
+  background-color: #a42220;
+  background-image: -moz-linear-gradient(top, #a42220 0%, #a42220 100%);
+  background-image: -ms-linear-gradient(top, #a42220 0%, #a42220 100%);
+  background-image: -o-linear-gradient(top, #a42220 0%, #a42220 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #a42220), color-stop(1, #a42220));
+  background-image: -webkit-linear-gradient(top, #a42220 0%, #a42220 100%);
+  background-image: linear-gradient(top, #a42220 0%, #a42220 100%);
+}
+#header-sub-nav {
+  background-color: #910f0f;
+}
+.title {
+  color: #910f0f;
+}
+#titlebar {
+  border-bottom-color: #910f0f;
+}
+#center-wrapper .sidebar .block {
+  background-color: #a82929;
+  color:#eeeeee;
+}
+#center-wrapper .sidebar .block.darkblock {
+  color:#ffffff;
+}
+.lightblock {
+  background-color: #a82929;
+}
+#center-wrapper .sidebar .block.lightblock {
+  background-color: #a82929;
+}
+.mediumblock {
+  background-color: #911010;
+}
+#center-wrapper .sidebar .block.mediumblock {
+  background-color: #911010;
+}
+.darkblock {
+  background-color: #353535;
+}
+#center-wrapper .sidebar .block.darkblock {
+  background-color: #353535;
+}
+a {
+  color: #d75900;
+}
+a:hover,
+a:focus {
+  color: #d75900;
+}
+a:active {
+  color: #d75900;
+}
+#center-wrapper,
+#squeeze {
+  background-color: #ffffff;
+}
+.region-header,
+.region-header a,
+.region-header li a.active,
+#name-and-slogan,
+#name-and-slogan a,
+#secondary-menu-links li a {
+  color: #fffeff;
+}
+#header .block-menu li a.active-trail {
+  color: #ff9900;
+}
+#center-wrapper .region-content h2 {
+  color:#910f0f;
+}
+.atmos_imgcaption,
+.ucar_imgcaption {
+  border-bottom: 2px solid #a42220;
+  border-top: 2px solid #a42220;
+}
+.triptych_two,
+.triptych_three {
+  color:#eeeeee;
+}
+.triptych_two h2 {
+  border-bottom: 2px solid #911010;
+}
+.triptych_three h2 {
+  border-bottom: 2px solid #a82929;
+}
+#triptych-columns .triptych_three a,
+#triptych-columns a,
+.sidebar li a {
+  color:#ff9900;
+}
+.contact-name {
+  color:#ff9900;
+}
+.sidebar li {
+  border-top: 1px solid #ff9900;
+}
+.footernav {
+  color: #666666;
+  background-color: #e3e4e6;
+}
+.footernav #orgFooter a,
+.footernav a {
+  color: #d75911;
+}
+.atmos-landing-block .views-field-field-image,
+.atmos-landing-block .views-field-field-image-fid,
+.atmos-landing-block .views-field-field-thumbnail-fid {
+  background-color: #a42220;
+}
+.atmos-landing-block .view-footer a {
+    color: #d75900;
+}
+.views-field-title a {
+    color: #d75900;
+}
