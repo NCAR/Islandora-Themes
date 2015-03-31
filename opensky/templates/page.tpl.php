@@ -165,8 +165,10 @@ elseif (@$site_slogan){
 
   <?php if (@$breadcrumb || @atmos_print_content_type_name($node)): ?>
     <div class="internal-header" class="clear-block">
-      <div class="breadcrumbs"></div> 
-      <h1><?php/* print @atmos_print_content_type_name($node); */ ?></h1>
+      <div class="breadcrumbs"><?php print $breadcrumb; ?></div>
+      <h1>
+       <?php /* print @atmos_print_content_type_name($node); */ ?>
+     </h1>
     </div>
 <?php endif; ?>
 
