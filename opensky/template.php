@@ -4,7 +4,6 @@
  * Add body classes if certain regions have content.
  */
 function ncarlibrary_preprocess_html(&$variables) {
-//	$variables['title'] = NULL; // Hide the node title before the node is getting rendered.
   // Setup Google Webmasters Verification Meta Tag
   $google_webmasters_verification = array(
     '#type' => 'html_tag',
