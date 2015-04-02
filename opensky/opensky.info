@@ -6,6 +6,7 @@ core = 7.x
 base theme = atmos
 
 
+stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/nice_menus_default.css
 stylesheets[all][] = css/colors.css
 stylesheets[all][] = css/custom.css

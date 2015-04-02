@@ -308,3 +308,9 @@ div#webform-component-copyright-notice-and-fair-use--please-check-i-have-read-an
 		margin-top:0;
 	}
 	/* ask a contact box */
+
+/* change a border for firstsidebar  */
+
+.sidebar li {
+	border-top :0px solid #020581;
+}
