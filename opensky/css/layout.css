@@ -493,7 +493,7 @@ h4 a{
 }
 .sidebar li{
   border-top: 1px solid #B54646;
-  padding: 10px 0;
+  padding: 0px 0;
 }
 .sidebar li a{
   list-style: none;
