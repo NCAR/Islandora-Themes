@@ -308,3 +308,8 @@ div#webform-component-copyright-notice-and-fair-use--please-check-i-have-read-an
 		margin-top:0;
 	}
 	/* ask a contact box */
+/*  Islandora Facet Stuff  */
+
+	.sidebar li {
+		line-height 5.5em;
+	}
