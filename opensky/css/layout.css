@@ -202,7 +202,7 @@ h4 a{
   width:380px;
 }
 #center-wrapper {
-  padding: 20px 10px 20px 20px;
+  padding: 20px 10px 20px 10px;
   min-height:400px;
   background-color:#FFFFFF;
 }
@@ -976,3 +976,6 @@ margin: 0;
   color: #FF9900;
 }
 
+#block-islandora-solr-simple h2 {
+	margin: 15px 0px 5px;
+{
