@@ -542,7 +542,7 @@ h4 a{
 }
 .content {
   background: transparent;
-  margin: 0 0 15px;
+  margin: 0 0 0px;
   padding: 10px 0;
   overflow: hidden;
 }
@@ -732,7 +732,7 @@ margin: 0;
   padding: 0;
 }
 #featured .content {
-  margin:0;
+  margin: 20px 0px;
   padding:0;
 }
 .featured-content {

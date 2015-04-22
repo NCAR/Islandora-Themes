@@ -314,3 +314,11 @@ div#webform-component-copyright-notice-and-fair-use--please-check-i-have-read-an
 .sidebar li {
 	border-top :0px solid #020581;
 }
+
+/* change border margin on bottom of home page / node1
+ div#node-2	{
+	margin: 0px 0px 0px;
+}
+.content {
+	margin: 0px 0px 0px;
+}
