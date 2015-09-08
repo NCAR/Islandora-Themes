@@ -187,7 +187,7 @@ h4 a{
 }
 #leftcol {
   float: left;
-  width: 270px;
+  width: 290px;
   margin: 12px 10px 0 0;
 }
 #center {
@@ -195,7 +195,7 @@ h4 a{
 }
 .one-sidebar #center {
   float: left;
-  width: 645px;
+  width: 625px;
 }
 .two-sidebars #center{
   float: left;
@@ -646,9 +646,9 @@ h4 a{
 /* blocks
 --------------------------------------------------*/
 #center-wrapper .sidebar .block {
-  width: 240px;
+  width: 280px;
   background: #A82626;
-  padding: 20px 15px 5px;
+  padding: 20px 5px 5px;
   margin: 0 0 15px 0;
 }
 #center-wrapper .sidebar .block-search {
