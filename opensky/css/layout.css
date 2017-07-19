@@ -489,7 +489,7 @@ h4 a{
 }
 .sidebar li.first{
   border: none;
-  padding: 0 0 10px;
+  padding: 0 0 00px;
 }
 .sidebar li{
   border-top: 1px solid #B54646;
