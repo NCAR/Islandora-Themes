@@ -26,7 +26,9 @@ body.maintenance-page {
 }
 .maintenance-page #header div.section,
 .maintenance-page #main {
+/*
   width: 700px;
+*/
 }
 .maintenance-page #main {
   margin: 0;
