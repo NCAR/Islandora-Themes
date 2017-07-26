@@ -11,7 +11,7 @@
  .box_flex{
 	display:inline-block;	 
 	margin-right:30px;
-	width"100px;
+	width:100px;
 	border:1px solid #fff;
 	
  }
@@ -321,4 +321,58 @@ div#webform-component-copyright-notice-and-fair-use--please-check-i-have-read-an
 }
 .content {
 	margin: 0px 0px 0px;
+}
+
+/* -----  search forms ------ */
+
+.search-wrapper {
+    padding:10px;
+    align:left;
+}
+
+#simple-search {
+    padding:10px 10px 10px 0;
+}
+
+#advanced-search {
+    background-color:white;
+    margin:10px 0;;
+}
+
+.search-toggler {
+    float:right;
+}
+
+
+.search-toggler {
+    color:#d75900;
+}
+
+.search-toggler:hover {
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+#islandora-solr-advanced-search-form {
+    background-color:transparent;
+}
+
+#islandora-solr-advanced-terms .form-item {
+    border:white solid 0;
+    margin-top:.5em;
+    margin-botton:.5em;
+}
+
+#islandora-solr-advanced-terms .form-item label {
+    font-size:.85em;
+    font-weight:normal;
+}
+
+/* drupalform styles */
+form#drupalform-form2 .container-inline-date {
+	clear:none;
+	float:left;
+	display:inline-block;
+	border:blue thin solid;
+	padding:10px;
 }

@@ -144,104 +144,124 @@ elseif (@$site_slogan){
 <?php
 }
 ?>
-
     </div> <!-- /#name-and-slogan -->
 <?php endif; ?>
 
 <?php print render($page['header']); ?>
   </div> <!-- /.section -->
 </div> <!-- /#header -->
-</div> <!-- /#header-wrap -->
+</div> <!-- /#header-wrap - page.tpl opensky -->
 
+<!-- SEARCH BOX -->
 <?php if (@$page['featured']): ?>
-<div id="featured" class="clear-block"><div class="align-center-wrapper">
-    <?php print render($page['featured']); ?>
-</div></div> <!-- /featured -->
+      <div>HELLO</div>
+    <div id="featured" class="clear-block">
+         <div id="simple-search" class="search-wrapper" style="display:none">
+              <div class="search-toggler">Advanced search</div>
+              <?php
+                // print render($page['featured']);      <!-- DEFAULT -->
+                $block = module_invoke('islandora_solr', 'block_view', 'simple');
+                print render($block['content']);
+              ?>
+        </div>
+
+        <div id="advanced-search" class="search-wrapper" style="display:none">
+             <div class="search-toggler">Simple search</div>
+             <h3 class="title">Advanced Search</h3>
+	     <div id="titlebar"></div>
+	     <?php
+                $block = module_invoke('islandora_solr', 'block_view', 'advanced');
+                print render($block['content']);
+             ?>
+        </div>
+
+    </div> <!-- /featured -->
 <?php endif; ?>
 
 <div id="wrap">
-  <div id="container" class="clear-block">
+    <div id="container" class="clear-block">
 
 
-  <?php if (@$breadcrumb || @atmos_print_content_type_name($node)): ?>
-    <div class="internal-header" class="clear-block">
-      <div class="breadcrumbs"><?php print $breadcrumb; ?></div>
-      <h1>
-       <?php /* print @atmos_print_content_type_name($node); */ ?>
-     </h1>
-    </div>
-<?php endif; ?>
+        <?php if (@$breadcrumb || @atmos_print_content_type_name($node)): ?>
+            <div class="internal-header" class="clear-block">
+                <div class="breadcrumbs"><?php print $breadcrumb; ?></div>
+                <h1>
+                    <?php /* print @atmos_print_content_type_name($node); */ ?>
+                </h1>
+            </div>
+        <?php endif; ?>
 
     <div id="center-wrapper" class="clear-block">
 
-      <?php if (@$page['highlighted']): ?>
-        <div id="highlighted">
-          <?php print render($page['highlighted']); ?>
-        </div> <!-- /#highlighted -->
-      <?php endif; ?>
+        <?php if (@$page['highlighted']): ?>
+            <div id="highlighted">
+                <?php print render($page['highlighted']); ?>
+            </div> <!-- /#highlighted -->
+        <?php endif; ?>
 
-      <?php if (@$page['sidebar_first']): ?>
-        <div id="leftcol" class="sidebar">
-          <?php print render($page['sidebar_first']); ?>
-        </div> <!-- /#sidebar-first -->
-      <?php endif; ?>
+        <?php if (@$page['sidebar_first']): ?>
+            <div id="leftcol" class="sidebar">
+                <?php print render($page['sidebar_first']); ?>
+            </div> <!-- /#sidebar-first -->
+        <?php endif; ?>
 
         <div id="center"><div id="squeeze"><div class="right-corner"><div class="left-corner">
 
-        <?php if (@$messages): print '<div class="messages-wrap">' .$messages . '</div>'; endif; ?>
-        <?php if (@$tabs): print '<div id="tabs-wrapper" class="clear-block">'. render($tabs) .'</div>'; endif; ?>
-        <?php if (@$tabs2): print '<ul class="tabs secondary">'. render($tabs2) .'</ul>'; endif; ?>
-        <?php if (@$action_links): print '<ul class="action-links">'. render($action_links) .'</ul>'; endif; ?>
+            <?php if (@$messages): print '<div class="messages-wrap">' .$messages . '</div>'; endif; ?>
+            <?php if (@$tabs): print '<div id="tabs-wrapper" class="clear-block">'. render($tabs) .'</div>'; endif; ?>
+            <?php if (@$tabs2): print '<ul class="tabs secondary">'. render($tabs2) .'</ul>'; endif; ?>
+            <?php if (@$action_links): print '<ul class="action-links">'. render($action_links) .'</ul>'; endif; ?>
 
-      <?php if (@$page['help']): ?>
-        <div id="help">
-          <?php print render($page['help']); ?>
-        </div> <!-- /#help -->
-      <?php endif; ?>
-<?php
+            <?php if (@$page['help']): ?>
+                <div id="help">
+                    <?php print render($page['help']); ?>
+                </div> <!-- /#help -->
+            <?php endif; ?>
 
-  // Some content types intentinally strip $node->title in the node-CONTENT_TYPE.tpl.php file.
-  // Views and panels are not content types, so no $node->type, but do have $title.  Check for that first.
-  // If there is a $node->type, check to see if $node->title exists
-if((!@$node->type && $title) || @$node->title){
-  print render($title_prefix);
-	print '<h1 class="title'. ($tabs ? ' with-tabs' : '') .'">' . $title . '</h1>';
-  print render($title_suffix);
-  
-	// Very specific to UCAR Comm's content types.  Many content types have a subtitle field.  
-	// In order to display it consistently and above the #titlebar, we call it out here.
-	// NOTE: The content types need to set "Full node" to "Hidden" under 
-	// admin/content/node-type/<CONTENT-TYPE>/display otherwise it will display twice.
-	// node-news_feature_story.tpl.php nulls the field value, since we NEVER want to display it there
-  if (@$node->field_subtitle[0]['value'] != ''){
-    print '<h3 class="subtitle">'. $node->field_subtitle[0]['value'] .'</h3>';
-  }
-  
-    print '<div id="titlebar"></div>';
-}
-?>
+            <?php
 
-          <a id="main-content"></a>
-          <div class="clear-block">
-          <?php print render($page['content'])?>
-          </div>
-          <div class="feed_icons">
-          <?php print $feed_icons; ?>
-          </div>
+                // Some content types intentinally strip $node->title in the node-CONTENT_TYPE.tpl.php file.
+                // Views and panels are not content types, so no $node->type, but do have $title.  Check for that first.
+                // If there is a $node->type, check to see if $node->title exists
+                if((!@$node->type && $title) || @$node->title){
+                    print render($title_prefix);
+                    print '<h1 class="title'. ($tabs ? ' with-tabs' : '') .'">' . $title . '</h1>';
+                    print render($title_suffix);
+
+                    // Very specific to UCAR Comm's content types.  Many content types have a subtitle field.
+                    // In order to display it consistently and above the #titlebar, we call it out here.
+                    // NOTE: The content types need to set "Full node" to "Hidden" under
+                    // admin/content/node-type/<CONTENT-TYPE>/display otherwise it will display twice.
+                    // node-news_feature_story.tpl.php nulls the field value, since we NEVER want to display it there
+                    if (@$node->field_subtitle[0]['value'] != ''){
+                        print '<h3 class="subtitle">'. $node->field_subtitle[0]['value'] .'</h3>';
+                    }
+
+                    print '<div id="titlebar"></div>';
+                }
+            ?>
+
+            <a id="main-content"></a>
+            <div class="clear-block">
+                <?php print render($page['content'])?>
+            </div>
+            <div class="feed_icons">
+                <?php print $feed_icons; ?>
+            </div>
 
         </div></div></div></div> <!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
 
-    <?php if (@$page['sidebar_second']): ?>
-        <div id="rightcol" class="sidebar">
-          <?php print render($page['sidebar_second']); ?>
-        </div> <!-- /#rightcol -->
-    <?php endif; ?>
+        <?php if (@$page['sidebar_second']): ?>
+            <div id="rightcol" class="sidebar">
+                <?php print render($page['sidebar_second']); ?>
+            </div> <!-- /#rightcol -->
+        <?php endif; ?>
 
-  <?php if (@$page['content_footer']): ?>
-    <div id="content-footer" class="clear-block">
-      <?php print render($page['content_footer']); ?>
-    </div> <!-- /#content_footer -->
-  <?php endif; ?>
+        <?php if (@$page['content_footer']): ?>
+            <div id="content-footer" class="clear-block">
+                <?php print render($page['content_footer']); ?>
+            </div> <!-- /#content_footer -->
+        <?php endif; ?>
 
     </div> <!-- /center-wrapper -->
   
