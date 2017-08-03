@@ -154,7 +154,6 @@ elseif (@$site_slogan){
 
 <!-- SEARCH BOX -->
 <?php if (@$page['featured']): ?>
-      <div>HELLO</div>
     <div id="featured" class="clear-block">
          <div id="simple-search" class="search-wrapper" style="display:none">
               <div class="search-toggler">Advanced search</div>

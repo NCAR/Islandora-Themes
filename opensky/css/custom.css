@@ -336,7 +336,7 @@ div#webform-component-copyright-notice-and-fair-use--please-check-i-have-read-an
 
 #advanced-search {
     background-color:white;
-    margin:10px 0;;
+    margin:10px 0;
 }
 
 .search-toggler {
@@ -366,6 +366,11 @@ div#webform-component-copyright-notice-and-fair-use--please-check-i-have-read-an
 #islandora-solr-advanced-terms .form-item label {
     font-size:.85em;
     font-weight:normal;
+}
+
+/* simple search label - hide! */
+.form-item-islandora-simple-search-query>label[for=edit-islandora-simple-search-query--2] {
+	display:none;
 }
 
 /* drupalform styles */
