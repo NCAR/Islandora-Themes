@@ -368,9 +368,17 @@ div#webform-component-copyright-notice-and-fair-use--please-check-i-have-read-an
     font-weight:normal;
 }
 
-/* simple search label - hide! */
-.form-item-islandora-simple-search-query>label[for=edit-islandora-simple-search-query--2] {
-	display:none;
+/* simple search labels */
+/* .form-item-opensky-simple-search-query>label[for=edit-opensky-simple-search-query--2] {*/
+#simple-search .form-item label {
+	/* display:none; */
+	color:white;
+	text-weight:normal;
+	padding:0 5px 0 10px;
+}
+
+#simple-search .form-item-collection label {
+	padding:0 5px 0 0px;
 }
 
 /* drupalform styles */
@@ -380,4 +388,31 @@ form#drupalform-form2 .container-inline-date {
 	display:inline-block;
 	border:blue thin solid;
 	padding:10px;
+}
+
+/* search this collection styles */
+#opensky-search-collection-info {
+  padding:0 0 10px;
+  background:white;
+  min-height: 108px;
+}
+
+#collection-search {
+  float:right;
+  width:200px;
+  padding:10px 5px 7px 5px;
+  margin:0px 7px 7px;
+  background:#eeeeee;
+  text-align:center;
+}
+
+input#edit-opensky-collection-search-query {
+    margin:5px 0 5px 0;
+}
+
+/* advanced search block */
+
+#opensky-advanced-search-form div.form-item {
+  display: inline-block;
+  margin-right: 10px;
 }

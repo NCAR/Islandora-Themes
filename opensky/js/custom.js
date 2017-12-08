@@ -12,7 +12,7 @@ function log(s) {
 
     $.parseParams = function(query) {
         var params = {}, e;
-		
+
         if (!query)
             return params;
 
@@ -86,6 +86,36 @@ function log(s) {
 	  activate_simple()
       }
 
+	  // turn the selected menu item's color to orange
+	  $('#header .block-menu a.active').css ('color', '#ff9900');
+
+	  // populate collection select options
+	  
+	  $simple_search_collection_select = $("#simple-search form select[name='collection']");
+	  $advanced_search_collection_select = $("#opensky-advanced-search-form select[name='collection']");
+
+	  $([$simple_search_collection_select, $advanced_search_collection_select]).each (function (i, target) {
+		  $target = $(target);
+		  if (typeof $target == 'undefined' || $target.length == 0) {
+			  log (i + " - TARGET NOT FOUND");
+			  return;
+		  }
+		  
+		  if ($target.length && typeof COLLECTION_SELECT_OPTIONS != 'undefined') {
+			  log ("COLLECTION_SELECT_OPTIONS");
+			  
+			  for (var key in COLLECTION_SELECT_OPTIONS) {
+				  log ('- ' + key + ' -> ' + COLLECTION_SELECT_OPTIONS[key]);
+				  $target.append($('<option>', {
+					  value: key,
+					  text : COLLECTION_SELECT_OPTIONS[key]
+				  }));
+			  }
+			  
+		  } else {
+			  log ("COLLECTION_SELECT_OPTIONS NOT DEFINED");
+		  }
+	  });
   })
 
 // Here we immediately call the function with jQuery as the parameter.

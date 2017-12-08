@@ -159,7 +159,8 @@ elseif (@$site_slogan){
               <div class="search-toggler">Advanced search</div>
               <?php
                 // print render($page['featured']);      <!-- DEFAULT -->
-                $block = module_invoke('islandora_solr', 'block_view', 'simple');
+                // $block = module_invoke('islandora_solr', 'block_view', 'simple');
+                $block = module_invoke('opensky', 'block_view', 'opensky_simple_search');
                 print render($block['content']);
               ?>
         </div>
@@ -169,7 +170,8 @@ elseif (@$site_slogan){
              <h3 class="title">Advanced Search</h3>
 	     <div id="titlebar"></div>
 	     <?php
-                $block = module_invoke('islandora_solr', 'block_view', 'advanced');
+                // $block = module_invoke('islandora_solr', 'block_view', 'advanced');
+                $block = module_invoke('opensky', 'block_view', 'opensky_advanced_search');
                 print render($block['content']);
              ?>
         </div>
@@ -299,3 +301,13 @@ elseif (@$site_slogan){
 </div> <!-- /#wrap -->
 <!-- /layout -->
 
+<?php
+// amazingly, request_uri() is returning the PREVIOUS page (on test anyway)
+// dsm('page.tpl.php');
+// dsm($_GET);
+// dsm($_SERVER['REQUEST_URI']);
+
+// DISABLED HERE - trying from page regions
+//  $block = module_invoke('opensky', 'block_view', 'opensky_collection_picker');
+//  print render($block['content']);
+?>
