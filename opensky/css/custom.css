@@ -408,6 +408,7 @@ form#drupalform-form2 .container-inline-date {
 
 input#edit-opensky-collection-search-query {
     margin:5px 0 5px 0;
+	width:95%;
 }
 
 /* advanced search block */
