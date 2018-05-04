@@ -1,4 +1,4 @@
-<? 
+<?php 
 $fname = $field_first_name[0]['safe_value'];
 $lname = $field_last_name[0]['safe_value'];
 $phone = $field_phone_extension[0]['safe_value'];
