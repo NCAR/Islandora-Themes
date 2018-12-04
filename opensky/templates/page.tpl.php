@@ -311,3 +311,4 @@ elseif (@$site_slogan){
 //  $block = module_invoke('opensky', 'block_view', 'opensky_collection_picker');
 //  print render($block['content']);
 ?>
+
