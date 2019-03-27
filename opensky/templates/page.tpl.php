@@ -313,14 +313,4 @@ elseif (@$site_slogan){
 </div> <!-- /#wrap -->
 <!-- /layout -->
 
-<?php
-// amazingly, request_uri() is returning the PREVIOUS page (on test anyway)
-// dsm('page.tpl.php');
-// dsm($_GET);
-// dsm($_SERVER['REQUEST_URI']);
-
-// DISABLED HERE - trying from page regions
-//  $block = module_invoke('opensky', 'block_view', 'opensky_collection_picker');
-//  print render($block['content']);
-?>
 
