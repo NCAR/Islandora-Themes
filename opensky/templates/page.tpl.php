@@ -170,9 +170,7 @@ elseif (@$site_slogan){
          <div id="simple-search" class="search-wrapper" style="display:none">
               <div class="search-toggler">Advanced search</div>
               <?php
-                // print render($page['featured']);      <!-- DEFAULT -->
-                // $block = module_invoke('islandora_solr', 'block_view', 'simple');
-                $block = module_invoke('opensky', 'block_view', 'opensky_simple_search');
+                $block = module_invoke('openskydora', 'block_view', 'openskydora_simple_search');
                 print render($block['content']);
               ?>
         </div>
@@ -182,8 +180,7 @@ elseif (@$site_slogan){
              <h3 class="title">Advanced Search</h3>
 	     <div id="titlebar"></div>
 	     <?php
-                // $block = module_invoke('islandora_solr', 'block_view', 'advanced');
-                $block = module_invoke('opensky', 'block_view', 'opensky_advanced_search');
+                $block = module_invoke('openskydora', 'block_view', 'openskydora_advanced_search');
                 print render($block['content']);
              ?>
         </div>

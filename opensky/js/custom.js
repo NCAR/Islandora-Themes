@@ -92,7 +92,7 @@ function log(s) {
 	  // populate collection select options
 	  
 	  $simple_search_collection_select = $("#simple-search form select[name='collection']");
-	  $advanced_search_collection_select = $("#opensky-advanced-search-form select[name='collection']");
+	  $advanced_search_collection_select = $("#openskydora-advanced-search-form select[name='collection']");
 
 	  $([$simple_search_collection_select, $advanced_search_collection_select]).each (function (i, target) {
 		  $target = $(target);
