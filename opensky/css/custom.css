@@ -369,7 +369,6 @@ div#webform-component-copyright-notice-and-fair-use--please-check-i-have-read-an
 }
 
 /* simple search labels */
-/* .form-item-opensky-simple-search-query>label[for=edit-opensky-simple-search-query--2] {*/
 #simple-search .form-item label {
 	/* display:none; */
 	color:white;
@@ -391,7 +390,7 @@ form#drupalform-form2 .container-inline-date {
 }
 
 /* search this collection styles */
-#opensky-search-collection-info {
+#openskydora-search-collection-info {
   padding:0 0 10px;
   background:white;
   min-height: 146px;
@@ -413,7 +412,7 @@ input#edit-opensky-collection-search-query {
 
 /* advanced search block */
 
-#opensky-advanced-search-form div.form-item {
+#openskydora-advanced-search-form div.form-item {
   display: inline-block;
   margin-right: 10px;
 }
