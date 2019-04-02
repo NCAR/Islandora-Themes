@@ -36,28 +36,14 @@
   </div>
   <div class="islandora-large-image-metadata">
 
-<br/>
-<?php if (isset($islandora_object['JPG'])): ?>
-<?php print l('Download Medium Sized Image (JPG)', "islandora/object/{$islandora_object}/datastream/JPG/download"); ?>
-          <?php endif; ?>
-<br/>
-<?php if (isset($islandora_object['OBJ'])): ?>
-<?php print l('Download Full Sized Image (TIFF)', "islandora/object/{$islandora_object}/datastream/OBJ/download"); ?>
-          <?php endif; ?>
-<br/>
-<br/>
-
 <!-- usage stats -->
-
-
 <?php  if (module_exists('islandora_usage_stats')): ?>
-<div>
+<div class="openskydora-info">
 <?php
    module_load_include('inc', 'islandora_usage_stats', 'includes/db');
 ?>
 
-<p>
-   Times viewed: <?php 
+   Times Viewed: <?php 
       /* using the view_count method from db.inc */
       print islandora_usage_stats_get_individual_object_view_count($islandora_object); ?>
 
@@ -74,18 +60,24 @@
          if (array_key_exists('JPG', $ds_count)) $times_downloaded += $ds_count['JPG'];
    ?>
       <br/>
-         Times downloaded (JPG/TIFF): <?php print $times_downloaded; ?>
+         Times Downloaded (JPG/TIFF): <?php print $times_downloaded; ?>
    <?php endif; ?>
 
-
-</p>
 </div>
 <?php endif; ?>
-
-
-
-
 <!-- end usage stats -->
+
+
+<div class="openskydora-info">
+<?php if (isset($islandora_object['JPG'])): ?>
+<?php print 'Download ' . l('Medium Sized Image (JPG)', "islandora/object/{$islandora_object}/datastream/JPG/download"); ?>
+          <?php endif; ?>
+<?php if (isset($islandora_object['OBJ'])): ?>
+<br/>
+<?php print 'Download ' . l('Full Sized Image (TIFF)', "islandora/object/{$islandora_object}/datastream/OBJ/download"); ?>
+          <?php endif; ?>
+</div>
+
 
     <?php print $description; ?>
     <?php if ($parent_collections): ?>

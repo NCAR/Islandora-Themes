@@ -416,3 +416,6 @@ input#edit-opensky-collection-search-query {
   display: inline-block;
   margin-right: 10px;
 }
+.openskydora-info {
+	margin:10px 0;
+}
