@@ -102,10 +102,10 @@ function log(s) {
 		  }
 		  
 		  if ($target.length && typeof COLLECTION_SELECT_OPTIONS != 'undefined') {
-			  log ("COLLECTION_SELECT_OPTIONS");
+			  // log ("COLLECTION_SELECT_OPTIONS");
 			  
 			  for (var key in COLLECTION_SELECT_OPTIONS) {
-				  log ('- ' + key + ' -> ' + COLLECTION_SELECT_OPTIONS[key]);
+				  // log ('- ' + key + ' -> ' + COLLECTION_SELECT_OPTIONS[key]);
 				  $target.append($('<option>', {
 					  value: key,
 					  text : COLLECTION_SELECT_OPTIONS[key]
