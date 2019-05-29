@@ -10,6 +10,10 @@ function log(s) {
         return decodeURIComponent(str.replace(/\+/g, ' '));
     };
 
+    $.fn.exists = function () {
+        return this.length !== 0;
+    }
+    
     $.parseParams = function(query) {
         var params = {}, e;
 
@@ -43,7 +47,7 @@ function log(s) {
 
 
   $(function () {  // must wait for dom to load
-	  log ('calling parseParams');
+      log ('openSky - custom.js calling parseParams');
       var PARAMS = $.parseParams(window.location.search);
 
       var simple = $('#simple-search');
@@ -116,6 +120,26 @@ function log(s) {
 			  log ("COLLECTION_SELECT_OPTIONS NOT DEFINED");
 		  }
 	  });
+
+      /* When audio player is a compound object child, the display is set too wide (640px)                                                                
+         and the controls do not display. Narrow the player so the controls can be seen.                                                                  
+	 Delay because viewer is loaded asynchronously (we should just listen for event ...)
+      */
+      setTimeout (function () {
+
+          // var $audio_player = $('#block-system-main #mediaplayer'); // osstage2Test
+	  var $audio_player = $('#block-system-main #islandora_videojs'); // DG prod
+          var $compound_object = $('#block-islandora-compound-object-compound-navigation');
+          if ($audio_player.exists() && $compound_object.exists()) {
+              // log ("Compound AUDIO PLAYER FOUND!!!");
+              $audio_player.css({
+                  // 'border': 'yellow dashed 3px',
+                  'width' : '540px',
+              });
+          }
+      }, 500);
+
+
   })
 
 // Here we immediately call the function with jQuery as the parameter.
