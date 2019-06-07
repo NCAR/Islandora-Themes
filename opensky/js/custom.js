@@ -134,7 +134,7 @@ function log(s) {
               // log ("Compound AUDIO PLAYER FOUND!!!");
               $audio_player.css({
                   // 'border': 'yellow dashed 3px',
-                  'width' : '540px',
+                  'width' : '580px',
               });
           }
       }, 500);
