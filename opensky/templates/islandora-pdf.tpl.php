@@ -10,7 +10,7 @@
 // Change download_link to be consistent with other cmodels 
 $sanitized_label = preg_replace('/[^A-Za-z0-9_\-]|\.pdf$/', '_', $islandora_object->label);
 $download_url = 'islandora/object/' . $islandora_object->id . '/datastream/OBJ/download/' . $sanitized_label . '.pdf';
-$islandora_download_link = 'Download ' . l('PDF', $download_url, array('attributes' => array('class' => array('islandora-pdf-link'))));
+$custom_download_link = 'Download ' . l('PDF', $download_url, array('attributes' => array('class' => array('islandora-pdf-link'))));
 // dpm($variables);
 ?>
 
@@ -48,13 +48,11 @@ $islandora_download_link = 'Download ' . l('PDF', $download_url, array('attribut
         </div>
       <?php endif; ?>  <!-- islandora_usage_stats -->
       <!-- end usage stats -->
-
       <?php if (isset($islandora_download_link)): ?>
-        <div class="openskydora-info"><?php print $islandora_download_link; ?></div>
+        <div class="openskydora-info"><?php print $custom_download_link; ?></div>
       <?php endif; ?>
     <?php endif; ?>
   </div>
-
 
   <div class="islandora-pdf-metadata">
     <?php print $description; ?>
