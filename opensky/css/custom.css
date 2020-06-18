@@ -419,3 +419,17 @@ input#edit-openskydora-collection-search-query {
 .openskydora-info {
 	margin:10px 0;
 }
+
+.breadcrumbs .search-breadcrumb,
+.breadcrumbs .filter-breadcrumb {
+	position:relative;
+	top:0px;
+	font-family:helvetica;
+	font-size:1.1em;
+	font-weight:bold;
+	/*color:red;*/
+}
+
+.breadcrumbs .spacer-breadcrumb {
+	padding:0px 3px;
+}

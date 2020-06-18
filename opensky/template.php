@@ -1,6 +1,42 @@
 <?php
 
 /**
+ * Returns HTML for a breadcrumb trail.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - breadcrumb: An array containing the breadcrumb links.
+ */
+function opensky_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+
+  if (!empty($breadcrumb)) {
+    // Provide a navigational heading to give context for breadcrumb links to
+    // screen-reader users. Make the heading invisible with .element-invisible.
+    $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+
+    //    $output .= '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
+    // $output .= '<div class="breadcrumb">' . implode(' | ', $breadcrumb) . '</div>';
+
+    $new_crumbs = array();
+    foreach ($breadcrumb as $index=>$val) {
+        $output .= $val;
+        if ($index < count($breadcrumb) -1) {
+            if (strpos ($val, 'search-breadcrumb') || strpos($val, 'filter-breadcrumb')) {
+                $output .= ': ';
+            } else if (strpos ($breadcrumb[$index+1], 'search-breadcrumb') || strpos ($breadcrumb[$index+1], 'filter-breadcrumb')) {
+                $output .= '<span class="spacer-breadcrumb">&nbsp;</span> ';
+            } else {
+                $output .= ' | ';
+            }
+        }
+    }
+    
+    return $output;
+  }
+}
+
+/**
  * Add body classes if certain regions have content.
  */
 function ncarlibrary_preprocess_html(&$variables) {
