@@ -13,6 +13,7 @@ stylesheets[all][] = css/custom.css
 stylesheets[all][] = css/media.css
 
 scripts[] = js/custom.js
+scripts[] = js/ga.js
 
 regions[page_top] = Page top
 regions[navigation] = Navigation

@@ -390,6 +390,7 @@ h4 a{
   width:auto;
   height:77px;
   z-index:1;
+  top:9px;
 }
 #header .nsf-logo {
   float:right;
