@@ -585,7 +585,7 @@ h4 a{
 }
 .internal-header {
   width: 930px;
-  height:25px;
+  min-height:25px;
   background: #E3E4E6;
   padding: 10px 25px 5px;
   overflow:hidden;
