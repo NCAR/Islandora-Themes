@@ -64,8 +64,11 @@ function log(s) {
 	      activate_simple();
       }
 
-	  // Details toggle is closed by default. Uncomment to open it
-	  Drupal.toggleFieldset($('fieldset.islandora.islandora-metadata.collapsible.collapsed'));
+	  // open details tab (the function is only defined for landing pages
+	  if (typeof (Drupal.toggleFieldset) == 'function') {
+		  // Details toggle is closed by default. Uncomment to open it
+		  Drupal.toggleFieldset($('fieldset.islandora.islandora-metadata.collapsible.collapsed'));
+	  }
 	  
       function activate_simple() {
           simple.show()
