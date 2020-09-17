@@ -91,14 +91,16 @@
 ?>
 
 <!-- Global site tag (gtag.js) - Google Analytics - inserted 8/1/2017, JLO -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-17806895-12"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?php print variable_get('openskydora_ga_id', '??') ?>"></script>
 <script>
 
+    log ("GA CODE: <?php print variable_get('openskydora_ga_id', '??') ?>");
+    
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-17806895-12');
+  gtag('config', '<?php print variable_get('openskydora_ga_id', '??') ?>');
 </script>
 
 <!-- TOP NAV -->
