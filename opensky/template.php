@@ -15,9 +15,6 @@ function opensky_breadcrumb($variables) {
     // screen-reader users. Make the heading invisible with .element-invisible.
     $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
 
-    //    $output .= '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
-    // $output .= '<div class="breadcrumb">' . implode(' | ', $breadcrumb) . '</div>';
-
     $new_crumbs = array();
     foreach ($breadcrumb as $index=>$val) {
         $output .= $val;
@@ -36,11 +33,17 @@ function opensky_breadcrumb($variables) {
   }
 }
 
+function opensky_preprocess_page (&$variables, $hook) {
+    // drupal_set_message ('PREPROCESSING Page');
+}
+
 /**
  * Add body classes if certain regions have content.
  */
-function ncarlibrary_preprocess_html(&$variables) {
+function opensky_preprocess_html(&$variables) {
+
   // Setup Google Webmasters Verification Meta Tag
+    // WHY do we need this verification??
   $google_webmasters_verification = array(
     '#type' => 'html_tag',
     '#tag' => 'meta',

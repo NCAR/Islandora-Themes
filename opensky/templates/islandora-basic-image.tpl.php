@@ -51,7 +51,11 @@
 
 <?php if (isset($islandora_object['OBJ'])): ?>
 <div class="openskydora-info">
-<?php print 'Download ' . l('Image', "islandora/object/{$islandora_object}/datastream/OBJ/download"); ?>
+<?php
+  $options['attributes']['class'] = array('islandora-pdf-link');
+  print 'Download ' . l('Image',
+  "islandora/object/{$islandora_object}/datastream/OBJ/download", $options);
+?>
 </div>
 <?php endif; ?>
 

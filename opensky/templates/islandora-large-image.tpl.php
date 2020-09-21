@@ -69,13 +69,20 @@
 
 
 <div class="openskydora-info">
-<?php if (isset($islandora_object['JPG'])): ?>
-<?php print 'Download ' . l('Medium Sized Image (JPG)', "islandora/object/{$islandora_object}/datastream/JPG/download"); ?>
-          <?php endif; ?>
+<?php
+  if (isset($islandora_object['JPG'])) {
+    $options['attributes']['class'] = array('islandora-pdf-link');
+    print 'Download ' . l('Medium Sized Image (JPG)',  "islandora/object/{$islandora_object}/datastream/JPG/download", $options);
+  }
+?>
+  
 <?php if (isset($islandora_object['OBJ'])): ?>
-<br/>
-<?php print 'Download ' . l('Full Sized Image (TIFF)', "islandora/object/{$islandora_object}/datastream/OBJ/download"); ?>
-          <?php endif; ?>
+  <br/>
+  <?php
+	$options['attributes']['class'] = array('islandora-pdf-link');
+	print 'Download ' . l('Full Sized Image (TIFF)', "islandora/object/{$islandora_object}/datastream/OBJ/download", $options);
+	?>
+<?php endif; ?>
 </div>
 
 

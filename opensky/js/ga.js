@@ -23,11 +23,18 @@ function createFunctionWithTimeout(callback, opt_timeout) {
   return fn;
 }
 
+function get_pid_from_path (s) {
+	var m = /\/islandora\/object\/([^\/]*)/.exec (s);
+	if (m) {
+		return decodeURIComponent(m[1]);
+	}
+}
+
 (function ($) {      // Use jQuery with the shortcut:
 
 	$(function () {  // must wait for dom to load
 		log ('openSky - ga.js processing');
-		
+
 		// ADVANCE SEARCH TOGGLE
 		$('.search-toggler')
 			.click(function (event) {
@@ -138,25 +145,26 @@ function createFunctionWithTimeout(callback, opt_timeout) {
 		instrument_search_form(advanced_search_form_id, advanced_search_term_selector, 'advanced-search');
 
 
-	  // TRACK the facets
+		// TRACK the facets
 	  $('.islandora-solr-facet-wrapper').each (function (i, wrapper) {
 		  var facet_name = $(wrapper).find ('h3').html();
 		  $(wrapper).find ('.islandora-solr-facet').each (function (i, facet) {
 			  var $link = $(facet).find('a');
 			  var value = $link.html();
-			  log ("- " + i + ": " + facet_name + ": " + value);
 			  $link.click (handle_facet_click);
 			  
 		  });
 	  });
-
+		
 		// TRACK SORT By Links
 		$('#block-islandora-solr-sort a').each (function (i, sort_link) {
 			var $link = $(sort_link);
-			log ("- " + $link.attr('title'));
 		});
 
 		$('#block-islandora-solr-sort a').click (handle_sort_click);
+
+		// Track download links
+		$('.islandora-pdf-link').click (handle_download_click);
 		
 		
 	});		 // wait for dom to load
@@ -258,5 +266,29 @@ function createFunctionWithTimeout(callback, opt_timeout) {
 		});
 	}
 
+	/*
+	  - category: download
+	  - action: (link text which generally tells object type, such as PDF
+	  - label: the PID
+*/
+	function handle_download_click (event) {
+
+		event.preventDefault();
+		var $link = $(event.target);
+		var pid = get_pid_from_path($link.attr('href'));
+		var action = $link.html();
+		
+		gtag('event', action, {
+            'event_category' : 'download',
+            'event_label' : pid,
+            'value' : 0,
+            'event_callback':
+            createFunctionWithTimeout (function () {
+                var url = $(event.target).closest('a.islandora-pdf-link').prop("href");
+                window.location = url;
+            })
+		});
+	}
+	
 }(jQuery));
 
