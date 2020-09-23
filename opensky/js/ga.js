@@ -156,11 +156,13 @@ function get_pid_from_path (s) {
 		  });
 	  });
 		
-		// TRACK SORT By Links
+
+		/*
 		$('#block-islandora-solr-sort a').each (function (i, sort_link) {
 			var $link = $(sort_link);
 		});
-
+		*/
+		// TRACK SORT By Links
 		$('#block-islandora-solr-sort a').click (handle_sort_click);
 
 		// Track download links
@@ -235,10 +237,10 @@ function get_pid_from_path (s) {
 		var value = $link.html();
 		var facet_name = "UNKNOWN";
 		facet_name = $link.closest('.islandora-solr-facet-wrapper').find('h3').html();
-		//		  log ("- " + facet_name + ": " + value);
+		var action = facet_name.replaceAll(' ', '_').toLowerCase() + "_facet";
 		
 		gtag('event', 'filter', {
-            'event_category' : facet_name,
+            'event_category' : action,
             'event_label' : value,
             'value' : 0,
             'event_callback':
@@ -253,10 +255,11 @@ function get_pid_from_path (s) {
 		event.preventDefault();
 		var $link = $(event.target);
 		var sortby = $link.attr('title');
+		var action = "sort_by_" + sortby.replaceAll(' ', '_').toLowerCase();
 		
-		gtag('event', 'sort', {
-            'event_category' : sortby,
-            'event_label' : '',
+ 		gtag('event', 'sort', {
+            'event_category' : action,
+            'event_label' : sortby,
             'value' : 0,
             'event_callback':
             createFunctionWithTimeout (function () {
@@ -267,10 +270,10 @@ function get_pid_from_path (s) {
 	}
 
 	/*
-	  - category: download
-	  - action: (link text which generally tells object type, such as PDF
+	  - action: download
+	  - category: (link text which generally tells object type, such as PDF
 	  - label: the PID
-*/
+	*/
 	function handle_download_click (event) {
 
 		event.preventDefault();
@@ -278,8 +281,8 @@ function get_pid_from_path (s) {
 		var pid = get_pid_from_path($link.attr('href'));
 		var action = $link.html();
 		
-		gtag('event', action, {
-            'event_category' : 'download',
+		gtag('event', 'download', {
+            'event_category' : action,
             'event_label' : pid,
             'value' : 0,
             'event_callback':
