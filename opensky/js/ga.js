@@ -42,8 +42,8 @@ function get_pid_from_path (s) {
 				var box = $(event.target).closest('.search-wrapper');
 				if (typeof gtag === "function") {
 					label = box.attr('id') == 'simple-search' ? 'open' : 'close';
-					gtag('event', 'toggle', {
-						'event_category' : 'advanced-search',
+					gtag('event', 'advanced-search', {
+						'event_category' : 'toggle',
 						'event_label' : label,
 						'value' : label == 'open' ? 1 : 0,
 					})
@@ -58,8 +58,8 @@ function get_pid_from_path (s) {
 			// log ("details click");
 			
 			var $field_set = $(event.target).closest('fieldset.islandora-metadata');
-			gtag('event', 'toggle', {
-				'event_category' : 'details',
+			gtag('event', 'details', {
+				'event_category' : 'toggle',
 				'event_label' : $field_set.hasClass('collapsed') ? 'close' : 'open',
 				'value' : $field_set.hasClass('collapsed') ? 0 : 1  //  1 if its opened
 			})
@@ -71,8 +71,8 @@ function get_pid_from_path (s) {
 			log ("in-collection click");
 			event.preventDefault();
 			
-			gtag('event', 'navigate', {
-				'event_category' : 'in-collection-link',
+			gtag('event', 'in-collection-link', {
+				'event_category' : 'navigate',
 				'event_label' : $(event.target).html(),
 				'value' : 0,
 				'event_callback': 
@@ -89,8 +89,8 @@ function get_pid_from_path (s) {
 			log ("breadcrumb click");
 			event.preventDefault();
 			
-			gtag('event', 'navigate', {
-				'event_category' : 'breadcrumb',
+			gtag('event', 'breadcrumb', {
+				'event_category' : 'navigate',
 				'event_label' : $(event.target).attr('title') || $(event.target).html(),
 				'value' : 0,
 				'event_callback': 
@@ -118,8 +118,8 @@ function get_pid_from_path (s) {
 				log ("date-range-submit");
 				event.preventDefault();
 				var form = document.getElementById('islandora-solr-range-slider-form-0');
-				gtag('event', 'filter', {
-					'event_category' : 'date-range',
+				gtag('event', 'date-range', {
+					'event_category' : 'filter',
 					'event_label' : '',
 					'value' : 0,
 					'event_callback': 
@@ -146,25 +146,19 @@ function get_pid_from_path (s) {
 
 
 		// TRACK the facets
-	  $('.islandora-solr-facet-wrapper').each (function (i, wrapper) {
-		  var facet_name = $(wrapper).find ('h3').html();
-		  $(wrapper).find ('.islandora-solr-facet').each (function (i, facet) {
-			  var $link = $(facet).find('a');
-			  var value = $link.html();
-			  $link.click (handle_facet_click);
-			  
-		  });
-	  });
+		$('.islandora-solr-facet-wrapper').each (function (i, wrapper) {
+			var facet_name = $(wrapper).find ('h3').html();
+			$(wrapper).find ('.islandora-solr-facet').each (function (i, facet) {
+				var $link = $(facet).find('a');
+				var value = $link.html();
+				$link.click (handle_facet_click);
+			});
+		});
 		
 
-		/*
-		$('#block-islandora-solr-sort a').each (function (i, sort_link) {
-			var $link = $(sort_link);
-		});
-		*/
 		// TRACK SORT By Links
 		$('#block-islandora-solr-sort a').click (handle_sort_click);
-
+		
 		// Track download links
 		$('.islandora-pdf-link').click (handle_download_click);
 		
@@ -172,7 +166,7 @@ function get_pid_from_path (s) {
 	});		 // wait for dom to load
 	
 	
-	function instrument_search_form(form_id, search_term_selector, category, value=0) {
+	function instrument_search_form(form_id, search_term_selector, action, value=0) {
 		/* 
 		   action is hardcoded as "search'
 		   the event label is the search term
@@ -188,8 +182,8 @@ function get_pid_from_path (s) {
 
 				// Send the event to Google Analytics and
 				// resubmit the form once the hit is done.
-				gtag('event', 'search', {
-					'event_category' : category,
+				gtag('event', action, {
+					'event_category' : 'search',
 					'event_label' : $(search_term_selector).val(),
 					'value' : value,
 					'event_callback': function() {
@@ -201,7 +195,7 @@ function get_pid_from_path (s) {
 		}
 	}
 	
-	function instrument_form(form_id, action, category, label, value=0) {
+	function instrument_form(form_id, category, action, label, value=0) {
 		// TRACK date-range-widget
 		/* For some reason, the bottom "filter button" does not trigger form submit
 		   so we have to trap it as a click and then call the form.submit();
@@ -239,8 +233,8 @@ function get_pid_from_path (s) {
 		facet_name = $link.closest('.islandora-solr-facet-wrapper').find('h3').html();
 		var action = facet_name.replaceAll(' ', '_').toLowerCase() + "_facet";
 		
-		gtag('event', 'filter', {
-            'event_category' : action,
+		gtag('event', action, {
+            'event_category' : 'filter',
             'event_label' : value,
             'value' : 0,
             'event_callback':
@@ -257,8 +251,8 @@ function get_pid_from_path (s) {
 		var sortby = $link.attr('title');
 		var action = "sort_by_" + sortby.replaceAll(' ', '_').toLowerCase();
 		
- 		gtag('event', 'sort', {
-            'event_category' : action,
+ 		gtag('event', action, {
+            'event_category' : 'sort' ,
             'event_label' : sortby,
             'value' : 0,
             'event_callback':
@@ -281,8 +275,8 @@ function get_pid_from_path (s) {
 		var pid = get_pid_from_path($link.attr('href'));
 		var action = $link.html();
 		
-		gtag('event', 'download', {
-            'event_category' : action,
+		gtag('event', action, {
+            'event_category' : 'download',
             'event_label' : pid,
             'value' : 0,
             'event_callback':
