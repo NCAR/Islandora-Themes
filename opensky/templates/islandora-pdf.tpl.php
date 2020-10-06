@@ -24,7 +24,7 @@ $custom_download_link = 'Download ' . l('PDF', $download_url, array('attributes'
 
       <!-- usage stats -->
       <?php  if (module_exists('islandora_usage_stats')): ?>
-        <div class="openskydora-info">
+        <div class="openskydora-info usage-stats">
           <?php
               module_load_include('inc', 'islandora_usage_stats', 'includes/db');
           ?>
@@ -57,7 +57,7 @@ $custom_download_link = 'Download ' . l('PDF', $download_url, array('attributes'
   <div class="islandora-pdf-metadata">
     <?php print $description; ?>
     <?php if($parent_collections): ?>
-      <div>
+      <div class="in-collections">
         <h2><?php print t('In collections'); ?></h2>
         <ul>
           <?php foreach ($parent_collections as $collection): ?>

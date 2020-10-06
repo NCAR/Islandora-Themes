@@ -24,6 +24,7 @@ function createFunctionWithTimeout(callback, opt_timeout) {
 }
 
 function get_pid_from_path (s) {
+	log ('--\n' + s);
 	var m = /\/islandora\/object\/([^\/]*)/.exec (s);
 	if (m) {
 		return decodeURIComponent(m[1]);
@@ -161,8 +162,20 @@ function get_pid_from_path (s) {
 		
 		// Track download links
 		$('.islandora-pdf-link').click (handle_download_click);
-		
-		
+
+		// Track 'pdf-view' links
+		$('.islandora-pdf-content a').click (handle_preview_click);
+		$('.islandora-basic-image-content a').click (handle_preview_click);
+
+		$('.ir_citationCModel img').click (handle_preview_click);
+
+/*
+		$('.islandora-pdf-content a').click (function (event) {
+			event.preventDefault();
+			log ("ouch!");
+			return false;
+		})
+*/		
 	});		 // wait for dom to load
 	
 	
@@ -286,6 +299,28 @@ function get_pid_from_path (s) {
             })
 		});
 	}
-	
+
+	/*
+	  - action: view
+	  - category: PDF (hard coded)
+	  - label: the PID
+	*/
+	function handle_preview_click (event) {
+		event.preventDefault();
+		var $link = $(event.target).closest('a');
+		var pid = get_pid_from_path($link.attr('href'));
+		var action = 'preview-click';
+
+		gtag('event', action, {
+            'event_category' : 'view',
+            'event_label' : pid,
+            'value' : 0,
+            'event_callback':
+            createFunctionWithTimeout (function () {
+                var url = $(event.target).closest('a').prop("href");
+                window.location = url;
+            })
+		});
+	}
 }(jQuery));
 
