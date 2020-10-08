@@ -163,19 +163,12 @@ function get_pid_from_path (s) {
 		// Track download links
 		$('.islandora-pdf-link').click (handle_download_click);
 
-		// Track 'pdf-view' links
+		// Track 'preview clicks'
 		$('.islandora-pdf-content a').click (handle_preview_click);
 		$('.islandora-basic-image-content a').click (handle_preview_click);
+		$('.islandora-citation-content a').click (handle_preview_click);
 
-		$('.ir_citationCModel img').click (handle_preview_click);
 
-/*
-		$('.islandora-pdf-content a').click (function (event) {
-			event.preventDefault();
-			log ("ouch!");
-			return false;
-		})
-*/		
 	});		 // wait for dom to load
 	
 	
