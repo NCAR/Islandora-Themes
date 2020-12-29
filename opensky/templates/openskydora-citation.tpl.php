@@ -10,23 +10,35 @@
 // Change download_link to be consistent with other cmodels 
 $sanitized_label = preg_replace('/[^A-Za-z0-9_\-]|\.citation$/', '_', $islandora_object->label);
 $download_url = 'islandora/object/' . $islandora_object->id . '/datastream/PDF/download/' . $sanitized_label . '.citation';
-$custom_download_link = 'Download ' . l('PDF', $download_url, array('attributes' => array('class' => array('islandora-pdf-link'))));
+$custom_download_link = l('Download PDF', $download_url, array('attributes' => array('class' => array('islandora-pdf-link'))));
+
+// supplemental/related resources
+$funding_info =	openskydora_get_funding_info($variables['islandora_object']);
+$related_software = openskydora_get_related_software($variables['islandora_object']);
+$related_datasets = openskydora_get_related_datasets($variables['islandora_object']);
+$related_misc = openskydora_get_related_misc($variables['islandora_object']);
 ?>
 
 <div class="islandora-citation-object islandora" vocab="http://schema.org/" prefix="dcterms: http://purl.org/dc/terms/" typeof="Article">
   <div class="islandora-citation-content-wrapper clearfix">
 	<?php if (isset($citation)): ?>
-	  <span class="citation"><?php print $citation ?></span>
+	  <span class="citation" id="container_citation"><?php print $citation ?>
+	  <button class="btn_copy_citation" onclick="copyCitation()">Copy Citation</button>
+          </span>
 	<?php endif; ?>
+
+<div class="islandora-content-container">
+    <div class="islandora-content-left">
+
 	<?php if (isset($islandora_content)): ?>
       <div class="islandora-citation-content">
         <?php print $islandora_content; ?>
       </div>
 
-
+ 
       <!-- usage stats -->
       <?php  if (module_exists('islandora_usage_stats')): ?>
-        <div class="openskydora-info usage-stats">
+        <!--//div class="openskydora-info usage-stats">
           <?php
               module_load_include('inc', 'islandora_usage_stats', 'includes/db');
           ?>
@@ -47,23 +59,14 @@ $custom_download_link = 'Download ' . l('PDF', $download_url, array('attributes'
   
           <?php endif; ?> 
   
-        </div>
+        </div//-->
       <?php endif; ?>  <!-- islandora_usage_stats -->
       <!-- end usage stats -->
       <?php if (isset($islandora_download_link)): ?>
-        <div class="openskydora-info"><?php print $custom_download_link; ?></div>
+        <div class="openskydora-info download-button"><?php print $custom_download_link; ?></div>
       <?php endif; ?>
     <?php endif; ?>
-    <?php if (isset($doi_link)): ?>
-    <div class="openskydora-info">
-	  <?php print $doi_link ?>
-	</div>
-    <?php endif; ?>	
 
-  </div>
-
-  <div class="islandora-citation-metadata">
-    <?php print $description; ?>
     <?php if($parent_collections): ?>
       <div class="in-collections">
         <h2><?php print t('In collections'); ?></h2>
@@ -74,6 +77,91 @@ $custom_download_link = 'Download ' . l('PDF', $download_url, array('attributes'
         </ul>
       </div>
     <?php endif; ?>
+
+    <!-- Related dataset -->
+    <?php if (@$related_datasets): ?>
+      <div class="related-datasets">
+        <h2><?php print t('Datasets Referenced'); ?></h2>
+		<ul>
+<?php 
+		  $dataset_count = 0;
+		  $total = count($related_datasets);
+		  foreach ($related_datasets as $dataset_item) {
+
+			  if($dataset_count == 3){
+                           print '<span id="dataset_more" class="hiddenContent">';
+			  }
+			  print $dataset_item['#markup'];
+
+			  if($dataset_count == $total-1){
+	                    print '</span>';
+			  }
+			  $dataset_count++;
+		  }
+				?>
+		</ul>
+<?php
+			  if($dataset_count > 3){
+				  print '<button id="dataset_more_btn" aria-label="Show more or less datasets toggle" 
+					 class="closed" onclick="toggleContent(\'dataset_more\')">'.t('Show more').'</button>';
+			  }
+?>
+	  </div>
+	<?php endif; ?>
+
+    <!-- Related software -->
+    <?php if (@$related_software): ?>
+      <div class="related-software">
+        <h2><?php print t('Software Referenced'); ?></h2>
+		<ul>
+		  <?php 
+		  $software_count = 0;
+		  $total = count($related_software);
+		  foreach ($related_software as $software_item) {
+
+			  if($software_count == 3){
+				  print '<span id="software_more" class="hiddenContent">';
+			  }
+			  print $software_item['#markup'];
+
+			  if($software_count == $total-1){
+			    print '</span>';
+			  }
+			  $software_count++;
+
+
+				}
+				?>
+		</ul>
+<?php 
+
+		  if($software_count > 3){
+print '<button id="software_more_btn" aria-label="Show more or show less software toggle" class="closed" onclick="toggleContent(\'software_more\')">'.t('Show more').'</button>';
+		  }
+?>
+	  </div>
+	<?php endif; ?>
+		    
+
+	</div>
+    <div class="islandora-content-right">
+
+  <div class="islandora-citation-metadata">
+    <?php print $description; ?>
+
+    <?php if (isset($doi_link)): ?>
+    <div class="openskydora-info published-url">
+	  <?php print $doi_link ?>
+	</div>
+    <?php endif; ?>	
+
     <?php print $metadata; ?>
   </div>
+
+</div>
+  </div> 
+
+
+  </div>
+
 </div>

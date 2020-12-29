@@ -10,12 +10,22 @@
 // Change download_link to be consistent with other cmodels 
 $sanitized_label = preg_replace('/[^A-Za-z0-9_\-]|\.pdf$/', '_', $islandora_object->label);
 $download_url = 'islandora/object/' . $islandora_object->id . '/datastream/OBJ/download/' . $sanitized_label . '.pdf';
-$custom_download_link = 'Download ' . l('PDF', $download_url, array('attributes' => array('class' => array('islandora-pdf-link'))));
-// dpm($variables);
+$custom_download_link = l('Download PDF', $download_url, array('attributes' => array('class' => array('islandora-pdf-link'))));
+// dsm($variables);
+
+// supplemental/related resources
+$funding_info = openskydora_get_funding_info($variables['islandora_object']);
+$related_software = openskydora_get_related_software($variables['islandora_object']);
+$related_datasets = openskydora_get_related_datasets($variables['islandora_object']);
+$related_misc = openskydora_get_related_misc($variables['islandora_object']);
 ?>
 
 <div class="islandora-pdf-object islandora" vocab="http://schema.org/" prefix="dcterms: http://purl.org/dc/terms/" typeof="Article">
-  <div class="islandora-pdf-content-wrapper clearfix">
+<div class="islandora-pdf-content-wrapper clearfix">
+
+<div class="islandora-content-container">
+<div class="islandora-content-left">  
+
     <?php if (isset($islandora_content)): ?>
       <div class="islandora-pdf-content">
         <?php print $islandora_content; ?>
@@ -24,7 +34,7 @@ $custom_download_link = 'Download ' . l('PDF', $download_url, array('attributes'
 
       <!-- usage stats -->
       <?php  if (module_exists('islandora_usage_stats')): ?>
-        <div class="openskydora-info usage-stats">
+        <!--//div class="openskydora-info usage-stats">
           <?php
               module_load_include('inc', 'islandora_usage_stats', 'includes/db');
           ?>
@@ -45,17 +55,15 @@ $custom_download_link = 'Download ' . l('PDF', $download_url, array('attributes'
   
           <?php endif; ?> 
   
-        </div>
+        </div//-->
       <?php endif; ?>  <!-- islandora_usage_stats -->
       <!-- end usage stats -->
       <?php if (isset($islandora_download_link)): ?>
-        <div class="openskydora-info"><?php print $custom_download_link; ?></div>
+        <div class="openskydora-info download-button"><?php print $custom_download_link; ?></div>
       <?php endif; ?>
     <?php endif; ?>
-  </div>
 
-  <div class="islandora-pdf-metadata">
-    <?php print $description; ?>
+
     <?php if($parent_collections): ?>
       <div class="in-collections">
         <h2><?php print t('In collections'); ?></h2>
@@ -66,6 +74,41 @@ $custom_download_link = 'Download ' . l('PDF', $download_url, array('attributes'
         </ul>
       </div>
     <?php endif; ?>
+
+    <!-- Related dataset -->
+    <?php if (@$related_datasets): ?>
+      <div class="related-datasets">
+        <h2><?php print t('Supporting Datasets'); ?></h2>
+		<ul>
+		  <?php foreach ($related_datasets as $dataset_item) {
+				  print $dataset_item['#markup'];
+				}
+				?>
+		</ul>
+	  </div>
+	<?php endif; ?>
+
+    <!-- Related software -->
+    <?php if (@$related_software): ?>
+      <div class="related-software">
+        <h2><?php print t('Supporting Software'); ?></h2>
+		<ul>
+		  <?php foreach ($related_software as $software_item) {
+				  print $software_item['#markup'];
+				}
+				?>
+		</ul>
+	  </div>
+	<?php endif; ?>
+		    
+  </div>
+
+<div class="islandora-content-right">
+  <div class="islandora-pdf-metadata">
+    <?php print $description; ?>
     <?php print $metadata; ?>
   </div>
+</div>
+</div>
+</div>
 </div>

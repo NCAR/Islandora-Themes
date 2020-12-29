@@ -3,8 +3,46 @@ function log(s) {
         console.log (s)
 }
 
+function toggleContent(divName){
+  var elm = document.getElementById(divName);
+  var btn = document.getElementById(divName+'_btn');
+ 
+  if(btn.className == 'closed') {
+    elm.className = 'visibleContent';
+
+    btn.className = 'opened';
+    btn.innerText = 'Show less';
+  } else {
+    elm.className = 'hiddenContent';
+    btn.className = 'closed';
+    btn.innerText = 'Show more';
+  }
+
+  
+}
+function copyCitation() {
+    var citation = "";
+
+    citation = document.getElementById("container_citation").childNodes[0].childNodes[0].childNodes[0].innerText;
+
+    copyToClipboard(citation);
+    alert("Citation copied to clipboard.");
+}
+const copyToClipboard = str => {
+  const el = document.createElement('textarea');
+  el.value = str;
+  el.setAttribute('readonly', '');
+  el.style.position = 'absolute';
+  el.style.left = '-9999px';
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+}
+
 (function ($) {      // Use jQuery with the shortcut:
-    
+
+
     var re = /([^&=]+)=?([^&]*)/g;
     var decode = function(str) {
         return decodeURIComponent(str.replace(/\+/g, ' '));
@@ -99,8 +137,10 @@ function log(s) {
 	  // turn the selected menu item's color to orange
 	  $('#header .block-menu a.active').css ('color', '#ff9900');
 
-	  // populate collection select options
+	  // set mouseover for pdf preview
+	  $('.islandora-pdf-content img').attr ('title', 'Click to view document');
 	  
+	  // populate collection select options
 	  $simple_search_collection_select = $("#simple-search form select[name='collection']");
 	  $advanced_search_collection_select = $("#openskydora-advanced-search-form select[name='collection']");
 

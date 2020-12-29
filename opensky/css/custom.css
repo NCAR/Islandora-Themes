@@ -1,3 +1,157 @@
+/* sharon additions */
+body {
+  font-size: 1rem;
+}i
+#titlebar {
+  margin-bottom:20px;
+}
+
+span.hiddenContent {
+border: 0; 
+  clip: rect(0 0 0 0); 
+  height: 1px; 
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+#dataset_more_btn, #software_more_btn, #contrib_more_btn, #authors_more_btn {
+   white-space: nowrap;
+   border:none;
+   padding:0;
+   background-color:transparent;
+    cursor: pointer;
+    color: #d75900;
+    font-size: 1rem;
+}
+
+.page-islandora-object .citation {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display:flex;
+  margin-bottom:50px;
+}
+.page-islandora-object .citation button.btn_copy_citation {
+  white-space:nowrap;
+  padding:0 20px;
+  cursor: pointer;
+  background-color: #DBE2E9;
+  color: #1A658F;
+  border: 2px solid #1A658F;
+  font-weight:bold;
+  font-size:1rem;
+  text-transform:uppercase;
+  margin-left:20px;
+}
+.page-islandora-object .citation button.btn_copy_citation:hover {
+  background-color: #c3d7ee;
+  text-decoration:underline;
+  border: 2px solid #007fa3;
+  color:#007fa3;
+}
+.islandora-content-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display:flex;
+  margin-top:20px;
+}
+.islandora-content-container .islandora-content-left {
+  width:25%; 
+  margin-right:20px;
+}
+.islandora-content-container .islandora-content-left .islandora-pdf-content {
+  background-color:transparent;
+  border-radius:0;
+  -webkit-border-radius:0;
+  -moz-border-radius: 0;
+  padding:0;
+}
+.islandora-content-container .islandora-content-left .islandora-citation-content a,
+.islandora-content-container .islandora-content-left .islandora-pdf-content a {
+  display:block;
+  border:3px solid #1a658f;
+  position:relative;
+}
+.pdf-click-view {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color:rgba(26,101,143,.25);
+  font-size: 1.2rem;
+  text-align:center;
+  display:block;
+  padding:15px;
+}
+.islandora-content-container .islandora-content-left .islandora-citation-content a:hover,
+.islandora-content-container .islandora-content-left .islandora-pdf-content a:hover {
+  border:3px dashed #efefef;
+}
+.islandora-content-container .islandora-content-left .islandora-citation-content img,
+.islandora-content-container .islandora-content-left .islandora-pdf-content img {
+  border:1px solid #ddd;
+  padding:15px;
+}
+.islandora-content-container .islandora-content-left .islandora-citation-content a img,
+.islandora-content-container .islandora-content-left .islandora-citation-content a img {
+ border:none;
+}
+.islandora-content-container .islandora-content-right {
+  width:75%;
+}
+
+#center-wrapper .block h2 {
+  text-transform: inherit;
+  background-color:transparent;
+  color:#003366;
+  font-size:1.3rem;
+  padding:0;
+}
+.openskydora-info.published-url {
+  padding: 20px 0;
+}
+.openskydora-info.download-button a {
+  background-color: #1A658F;
+  border: 2px solid #1a658f;
+  color:#fff;
+  display:block;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align:center;
+  padding:15px 10px;
+  margin-bottom: 50px;
+  margin-left:0;
+  text-transform: uppercase;
+}
+.openskydore-info.download-button a:hover{
+  background-color:#007fa3;
+}
+.openskydora-info.download-button a:focus, 
+.openskydora-info.download-button a:active {
+ border: 2px solid #C3D7ee;
+}
+.islandora-pdf-content {
+  float:none;
+}
+
+fieldset.collapsible {
+  positions: relative;
+  border:none;
+  border-top: 3px solid #000;
+  background-color:#efefef;
+}
+.islandora-metadata dt {
+  font-weight: bold;
+  font-family: 'UbuntuBold', sans-serif;
+}
+
+/* end sharon additions */
+
+
 /* layout */
 .box_150 {
 	width:150px !important;	 
@@ -38,10 +192,7 @@ li {
 	margin-top: 5px;
     margin-bottom: 5px;	
 }
-#center-wrapper .block h2 {
-	padding:0;
-	padding: 4px 8px;
-}
+
 .pane-content .lightblock {
 	padding:0 2px 5px 2px;	
 }
@@ -432,4 +583,33 @@ input#edit-openskydora-collection-search-query {
 
 .breadcrumbs .spacer-breadcrumb {
 	padding:0px 3px;
+}
+
+@media only screen and (max-width: 980px) {
+  #wrap {
+    width:100%;
+  }
+  #leftcol,
+  #center-wrapper .sidebar .block {
+    width:auto;
+    float:none;
+  }
+  .islandora-compound-thumbs {
+    display:flex;	  
+  }
+  .one-sidebar #center {
+    width:100%;	  
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .islandora-content-container,
+  .islandora-compound-thumbs {
+    flex-direction: column;
+  }
+  .islandora-content-container .islandora-content-left,
+  .islandora-content-container .islandora-content-right {
+    width:100%;
+    margin:10px;
+  }
 }

@@ -167,10 +167,126 @@ function get_pid_from_path (s) {
 		$('.islandora-pdf-content a').click (handle_preview_click);
 		$('.islandora-basic-image-content a').click (handle_preview_click);
 		$('.islandora-citation-content a').click (handle_preview_click);
+17
+		// --------------------
+        /* TRACK related-datasets clicks */
+		$('.related-datasets a').click (function (event) {
+            log ("dataset click");
+            event.preventDefault();
+			
+            gtag('event', 'dataset', {
+                'event_category' : 'related',
+				'event_label' : $(event.target).attr('href') || $(event.target).html(),
+                'value' : 0,
+                'event_callback':
+                createFunctionWithTimeout (function () {
+                    var url = $(event.target).closest('a').prop("href");
+                    window.location = url;
+                })
+            })
+		});
 
+		/* TRACK related-software clicks */
+		$('.related-software a').click (function (event) {
+            log ("software click");
+            event.preventDefault();
+			
+            gtag('event', 'software', {
+                'event_category' : 'related',
+				'event_label' : $(event.target).attr('href') || $(event.target).html(),
+                'value' : 0,
+                'event_callback':
+                createFunctionWithTimeout (function () {
+                    var url = $(event.target).closest('a').prop("href");
+                    window.location = url;
+                })
+            })
+		});
+
+		/* Track the MORE button for Contributors */
+		$('#contrib_more_btn').click(function (event) {
+            log ("contrib_more_btn - sending GA event")
+            var button = $(event.target)
+            if (typeof gtag === "function") {
+				var classes = button.attr('class').split(' ');
+				if (typeof (classes) == 'string') {
+					classes = [classes];
+				}
+
+				label = classes.includes ('opened') ? 'more' : 'less';
+				log ("label: " + label);
+
+				gtag('event', 'contributors', {
+					'event_category' : 'toggle',
+					'event_label' : label,
+					'value' : label == 'more' ? 1 : 0,
+				})
+			}
+		});
+		
+		/* Track the SHOW MORE button for DATASET */
+		$('#dataset_more_btn').click(function (event) {
+            var button = $(event.target)
+            if (typeof gtag === "function") {
+				var classes = button.attr('class').split(' ');
+				if (typeof (classes) == 'string') {
+					classes = [classes];
+				}
+
+				label = classes.includes ('opened') ? 'more' : 'less';
+				log ("label: " + label);
+
+				gtag('event', 'datasets', {
+					'event_category' : 'toggle',
+					'event_label' : label,
+					'value' : label == 'more' ? 1 : 0,
+				})
+			}
+		});
+
+		/* Track the SHOW MORE button for SOFTWARE */
+		$('#software_more_btn').click(function (event) {
+            var button = $(event.target)
+            if (typeof gtag === "function") {
+				var classes = button.attr('class').split(' ');
+				if (typeof (classes) == 'string') {
+					classes = [classes];
+				}
+
+				label = classes.includes ('opened') ? 'more' : 'less';
+				log ("label: " + label);
+
+				gtag('event', 'software', {
+					'event_category' : 'toggle',
+					'event_label' : label,
+					'value' : label == 'more' ? 1 : 0,
+				})
+			}
+		});
+
+		/* Track the COPY CITATION button */
+        $('.btn_copy_citation').click(function (event) {
+			log ("copy citation");
+            var button = $(event.target)
+            if (typeof gtag === "function") {
+                gtag('event', 'citation', {
+                    'event_category' : 'copy',
+                })
+            }
+        });
+
+        /* Track the Show MORE btn for DESCRIPTION */
+        $('.description a.toggler').click(function (event) {
+			var label = $(event.target).html() == 'Show more' ? 'more' : 'less';
+			log ("OUCH - " + label);			
+			gtag('event', 'description', {
+				'event_category' : 'toggle',
+				'event_label' : label,
+				'value' : label == 'more' ? 1 : 0,
+			})
+        });
 
 	});		 // wait for dom to load
-	
 	
 	function instrument_search_form(form_id, search_term_selector, action, value=0) {
 		/* 
@@ -315,5 +431,6 @@ function get_pid_from_path (s) {
             })
 		});
 	}
+		
 }(jQuery));
 
