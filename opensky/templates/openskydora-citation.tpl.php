@@ -16,7 +16,7 @@ $custom_download_link = l('Download PDF', $download_url, array('attributes' => a
 $funding_info =	openskydora_get_funding_info($variables['islandora_object']);
 $related_software = openskydora_get_related_software($variables['islandora_object']);
 $related_datasets = openskydora_get_related_datasets($variables['islandora_object']);
-$related_misc = openskydora_get_related_misc($variables['islandora_object']);
+$related_other = openskydora_get_related_others($variables['islandora_object']);
 ?>
 
 <div class="islandora-citation-object islandora" vocab="http://schema.org/" prefix="dcterms: http://purl.org/dc/terms/" typeof="Article">
@@ -81,7 +81,7 @@ $related_misc = openskydora_get_related_misc($variables['islandora_object']);
     <!-- Related dataset -->
     <?php if (@$related_datasets): ?>
       <div class="related-datasets">
-        <h2><?php print t('Datasets Referenced'); ?></h2>
+        <h2><?php print t('Supporting Datasets'); ?></h2>
 		<ul>
 <?php 
 		  $dataset_count = 0;
@@ -112,7 +112,7 @@ $related_misc = openskydora_get_related_misc($variables['islandora_object']);
     <!-- Related software -->
     <?php if (@$related_software): ?>
       <div class="related-software">
-        <h2><?php print t('Software Referenced'); ?></h2>
+        <h2><?php print t('Supporting Software'); ?></h2>
 		<ul>
 		  <?php 
 		  $software_count = 0;
@@ -128,15 +128,42 @@ $related_misc = openskydora_get_related_misc($variables['islandora_object']);
 			    print '</span>';
 			  }
 			  $software_count++;
-
-
 				}
 				?>
 		</ul>
 <?php 
-
 		  if($software_count > 3){
 print '<button id="software_more_btn" aria-label="Show more or show less software toggle" class="closed" onclick="toggleContent(\'software_more\')">'.t('Show more').'</button>';
+		  }
+?>
+	  </div>
+	<?php endif; ?>
+
+    <!-- Related Other -->
+    <?php if (@$related_other): ?>
+      <div class="related-other">
+        <h2><?php print t('Other Supporting Resources'); ?></h2>
+		<ul>
+		  <?php 
+		  $other_count = 0;
+		  $total = count($related_other);
+		  foreach ($related_other as $other_item) {
+
+			  if($other_count == 3){
+				  print '<span id="other_more" class="hiddenContent">';
+			  }
+			  print $other_item['#markup'];
+
+			  if($other_count == $total-1){
+			    print '</span>';
+			  }
+			  $other_count++;
+				}
+				?>
+		</ul>
+<?php 
+		  if($other_count > 3){
+print '<button id="other_more_btn" aria-label="Show more or show less other toggle" class="closed" onclick="toggleContent(\'other_more\')">'.t('Show more').'</button>';
 		  }
 ?>
 	  </div>

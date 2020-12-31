@@ -1,7 +1,7 @@
 /*
 a utility function to handle timeouts
 
-useage:
+usage:
   gtag('event', 'signup_form', { 'event_callback': {
     createFunctionWithTimeout(function() {
       form.submit();
@@ -167,103 +167,46 @@ function get_pid_from_path (s) {
 		$('.islandora-pdf-content a').click (handle_preview_click);
 		$('.islandora-basic-image-content a').click (handle_preview_click);
 		$('.islandora-citation-content a').click (handle_preview_click);
-17
+
 		// --------------------
         /* TRACK related-datasets clicks */
 		$('.related-datasets a').click (function (event) {
             log ("dataset click");
-            event.preventDefault();
-			
-            gtag('event', 'dataset', {
-                'event_category' : 'related',
-				'event_label' : $(event.target).attr('href') || $(event.target).html(),
-                'value' : 0,
-                'event_callback':
-                createFunctionWithTimeout (function () {
-                    var url = $(event.target).closest('a').prop("href");
-                    window.location = url;
-                })
-            })
+			handle_supporting_resource_click (event, 'dataset');
 		});
 
 		/* TRACK related-software clicks */
 		$('.related-software a').click (function (event) {
             log ("software click");
-            event.preventDefault();
-			
-            gtag('event', 'software', {
-                'event_category' : 'related',
-				'event_label' : $(event.target).attr('href') || $(event.target).html(),
-                'value' : 0,
-                'event_callback':
-                createFunctionWithTimeout (function () {
-                    var url = $(event.target).closest('a').prop("href");
-                    window.location = url;
-                })
-            })
+			handle_supporting_resource_click (event, 'software');
 		});
 
-		/* Track the MORE button for Contributors */
-		$('#contrib_more_btn').click(function (event) {
-            log ("contrib_more_btn - sending GA event")
-            var button = $(event.target)
-            if (typeof gtag === "function") {
-				var classes = button.attr('class').split(' ');
-				if (typeof (classes) == 'string') {
-					classes = [classes];
-				}
-
-				label = classes.includes ('opened') ? 'more' : 'less';
-				log ("label: " + label);
-
-				gtag('event', 'contributors', {
-					'event_category' : 'toggle',
-					'event_label' : label,
-					'value' : label == 'more' ? 1 : 0,
-				})
-			}
+		/* TRACK related-software clicks */
+		$('.related-other a').click (function (event) {
+            log ("other click");
+			handle_supporting_resource_click (event, 'other');
 		});
 		
+		/* Track the MORE button for Contributors */
+		$('#contrib_more_btn').click(function (event) {
+			handle_more_less_btn_click(event, 'contributors');
+		});
+
 		/* Track the SHOW MORE button for DATASET */
 		$('#dataset_more_btn').click(function (event) {
-            var button = $(event.target)
-            if (typeof gtag === "function") {
-				var classes = button.attr('class').split(' ');
-				if (typeof (classes) == 'string') {
-					classes = [classes];
-				}
-
-				label = classes.includes ('opened') ? 'more' : 'less';
-				log ("label: " + label);
-
-				gtag('event', 'datasets', {
-					'event_category' : 'toggle',
-					'event_label' : label,
-					'value' : label == 'more' ? 1 : 0,
-				})
-			}
+			handle_more_less_btn_click(event, 'datasets');
 		});
 
 		/* Track the SHOW MORE button for SOFTWARE */
 		$('#software_more_btn').click(function (event) {
-            var button = $(event.target)
-            if (typeof gtag === "function") {
-				var classes = button.attr('class').split(' ');
-				if (typeof (classes) == 'string') {
-					classes = [classes];
-				}
-
-				label = classes.includes ('opened') ? 'more' : 'less';
-				log ("label: " + label);
-
-				gtag('event', 'software', {
-					'event_category' : 'toggle',
-					'event_label' : label,
-					'value' : label == 'more' ? 1 : 0,
-				})
-			}
+			handle_more_less_btn_click(event, 'software');
 		});
 
+		/* Track the SHOW MORE button for other relatedItems */
+		$('#other_more_btn').click(function (event) {
+			handle_more_less_btn_click(event, 'other');
+		});
+		
 		/* Track the COPY CITATION button */
         $('.btn_copy_citation').click(function (event) {
 			log ("copy citation");
@@ -385,6 +328,43 @@ function get_pid_from_path (s) {
 		});
 	}
 
+	function handle_supporting_resource_click (event, genre) {
+        var button = $(event.target)
+        if (typeof gtag === "function") {
+            event.preventDefault();
+			
+            gtag('event', genre, {
+                'event_category' : 'related',
+				'event_label' : $(event.target).attr('href') || $(event.target).html(),
+                'value' : 0,
+                'event_callback':
+                createFunctionWithTimeout (function () {
+                    var url = $(event.target).closest('a').prop("href");
+                    window.location = url;
+                })
+            })
+		}
+	}
+
+	function handle_more_less_btn_click(event, genre) {
+        var button = $(event.target)
+        if (typeof gtag === "function") {
+			var classes = button.attr('class').split(' ');
+			if (typeof (classes) == 'string') {
+				classes = [classes];
+			}
+			
+			label = classes.includes ('opened') ? 'more' : 'less';
+			log ("label: " + label);
+			
+			gtag('event', genre, {
+				'event_category' : 'toggle',
+				'event_label' : label,
+				'value' : label == 'more' ? 1 : 0,
+			})
+		}
+	}
+	
 	/*
 	  - action: download
 	  - category: (link text which generally tells object type, such as PDF
