@@ -104,7 +104,7 @@ $related_other = openskydora_get_related_others($variables['islandora_object']);
     <!-- Related other -->
     <?php if (@$related_other): ?>
       <div class="related-other">
-        <h2><?php print t('Other Supporting Resources'); ?></h2>
+        <h2><?php print t('Supporting Service or Object'); ?></h2>
 		<ul>
 		  <?php foreach ($related_other as $other_item) {
 				  print $other_item['#markup'];

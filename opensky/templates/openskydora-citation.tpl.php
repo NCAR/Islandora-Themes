@@ -142,7 +142,7 @@ print '<button id="software_more_btn" aria-label="Show more or show less softwar
     <!-- Related Other -->
     <?php if (@$related_other): ?>
       <div class="related-other">
-        <h2><?php print t('Other Supporting Resources'); ?></h2>
+        <h2><?php print t('Supporting Service or Object'); ?></h2>
 		<ul>
 		  <?php 
 		  $other_count = 0;

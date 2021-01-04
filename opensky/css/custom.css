@@ -24,6 +24,7 @@ border: 0;
     cursor: pointer;
     color: #d75900;
     font-size: 1rem;
+    margin-bottom: 20px;
 }
 
 .page-islandora-object .citation {
