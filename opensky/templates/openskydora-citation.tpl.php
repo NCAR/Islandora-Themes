@@ -14,9 +14,11 @@ $custom_download_link = l('Download PDF', $download_url, array('attributes' => a
 
 // supplemental/related resources
 $funding_info =	openskydora_get_funding_info($variables['islandora_object']);
-$related_software = openskydora_get_related_software($variables['islandora_object']);
-$related_datasets = openskydora_get_related_datasets($variables['islandora_object']);
-$related_other = openskydora_get_related_others($variables['islandora_object']);
+$related_items = openskydora_get_related_items($variables['islandora_object']);
+$related_software = $related_items['software'];
+$related_datasets =  $related_items['datasets'];
+$related_other =  $related_items['other'];
+
 ?>
 
 <div class="islandora-citation-object islandora" vocab="http://schema.org/" prefix="dcterms: http://purl.org/dc/terms/" typeof="Article">
