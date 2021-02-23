@@ -26,7 +26,9 @@ border: 0;
     font-size: 1rem;
     margin-bottom: 20px;
 }
-
+.solr-fields dt, .solr-fields dd {
+  word-wrap:normal;
+}
 .page-islandora-object .citation {
   display: -webkit-box;
   display: -moz-box;
