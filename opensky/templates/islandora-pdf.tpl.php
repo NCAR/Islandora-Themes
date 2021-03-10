@@ -17,6 +17,7 @@ $funding_info = openskydora_get_funding_info($variables['islandora_object']);
 $related_items = openskydora_get_related_items($variables['islandora_object']);
 $related_software = $related_items['software'];
 $related_datasets =  $related_items['datasets'];
+$related_documents =  $related_items['documents'];
 $related_other =  $related_items['other'];
 ?>
 
@@ -34,7 +35,7 @@ $related_other =  $related_items['other'];
 
       <!-- usage stats -->
       <?php  if (module_exists('islandora_usage_stats')): ?>
-        <!--//div class="openskydora-info usage-stats">
+        <!-- div class="openskydora-info usage-stats">
           <?php
               module_load_include('inc', 'islandora_usage_stats', 'includes/db');
           ?>
@@ -55,7 +56,7 @@ $related_other =  $related_items['other'];
   
           <?php endif; ?> 
   
-        </div//-->
+        </div //-->
       <?php endif; ?>  <!-- islandora_usage_stats -->
       <!-- end usage stats -->
       <?php if (isset($islandora_download_link)): ?>
@@ -74,6 +75,21 @@ $related_other =  $related_items['other'];
         </ul>
       </div>
     <?php endif; ?>
+
+
+    <!-- Related document -->
+    <?php if (@$related_documents): ?>
+      <div class="related-documents">
+        <h2><?php print t('Related Documents'); ?></h2>
+		<ul>
+		  <?php foreach ($related_documents as $document_item) {
+				  print $document_item['#markup'];
+				}
+				?>
+		</ul>
+	  </div>
+	<?php endif; ?>
+
 
     <!-- Related dataset -->
     <?php if (@$related_datasets): ?>

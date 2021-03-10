@@ -175,13 +175,19 @@ function get_pid_from_path (s) {
 			handle_supporting_resource_click (event, 'dataset');
 		});
 
+        /* TRACK related-documents clicks */
+		$('.related-documents a').click (function (event) {
+            log ("related document click");
+			handle_supporting_resource_click (event, 'document');
+		});
+
 		/* TRACK related-software clicks */
 		$('.related-software a').click (function (event) {
             log ("software click");
 			handle_supporting_resource_click (event, 'software');
 		});
 
-		/* TRACK related-software clicks */
+		/* TRACK related-other clicks */
 		$('.related-other a').click (function (event) {
             log ("other click");
 			handle_supporting_resource_click (event, 'other');
@@ -195,6 +201,11 @@ function get_pid_from_path (s) {
 		/* Track the SHOW MORE button for DATASET */
 		$('#dataset_more_btn').click(function (event) {
 			handle_more_less_btn_click(event, 'datasets');
+		});
+
+		/* Track the SHOW MORE button for DOCUMENT */
+		$('#document_more_btn').click(function (event) {
+			handle_more_less_btn_click(event, 'documents');
 		});
 
 		/* Track the SHOW MORE button for SOFTWARE */

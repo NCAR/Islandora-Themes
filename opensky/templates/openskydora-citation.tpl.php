@@ -17,6 +17,7 @@ $funding_info =	openskydora_get_funding_info($variables['islandora_object']);
 $related_items = openskydora_get_related_items($variables['islandora_object']);
 $related_software = $related_items['software'];
 $related_datasets =  $related_items['datasets'];
+$related_documents =  $related_items['documents'];
 $related_other =  $related_items['other'];
 
 ?>
@@ -80,6 +81,37 @@ $related_other =  $related_items['other'];
       </div>
     <?php endif; ?>
 
+    <!-- Related documents -->
+    <?php if (@$related_documents): ?>
+      <div class="related-documents">
+        <h2><?php print t('Related Documents'); ?></h2>
+		<ul>
+<?php 
+		  $document_count = 0;
+		  $total = count($related_documents);
+		  foreach ($related_documents as $document_item) {
+
+			  if($document_count == 3){
+                           print '<span id="document_more" class="hiddenContent">';
+			  }
+			  print $document_item['#markup'];
+
+			  if($document_count == $total-1){
+	                    print '</span>';
+			  }
+			  $document_count++;
+		  }
+				?>
+		</ul>
+<?php
+			  if($document_count > 3){
+				  print '<button id="document_more_btn" aria-label="Show more or less documents toggle" 
+					 class="closed" onclick="toggleContent(\'document_more\')">'.t('Show more').'</button>';
+			  }
+?>
+	  </div>
+	<?php endif; ?>
+
     <!-- Related dataset -->
     <?php if (@$related_datasets): ?>
       <div class="related-datasets">
@@ -111,7 +143,7 @@ $related_other =  $related_items['other'];
 	  </div>
 	<?php endif; ?>
 
-    <!-- Related software -->
+<!-- Related software -->
     <?php if (@$related_software): ?>
       <div class="related-software">
         <h2><?php print t('Supporting Software'); ?></h2>
