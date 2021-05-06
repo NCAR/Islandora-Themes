@@ -232,7 +232,6 @@ function get_pid_from_path (s) {
         /* Track the Show MORE btn for DESCRIPTION */
         $('.description a.toggler').click(function (event) {
 			var label = $(event.target).html() == 'Show more' ? 'more' : 'less';
-			log ("OUCH - " + label);			
 			gtag('event', 'description', {
 				'event_category' : 'toggle',
 				'event_label' : label,
@@ -240,6 +239,15 @@ function get_pid_from_path (s) {
 			})
         });
 
+		/* Track exit links on Contribute page */
+		$('.policy-link').click (function (event) {
+			handle_exit_click(event, 'contribute-policy');
+		})
+
+		/* Track exit links on Contribute page */
+		$('.contribute-button').click (function (event) {
+			handle_exit_click(event, 'contribute-form');
+		})		
 	});		 // wait for dom to load
 	
 	function instrument_search_form(form_id, search_term_selector, action, value=0) {
@@ -418,6 +426,27 @@ function get_pid_from_path (s) {
             'event_callback':
             createFunctionWithTimeout (function () {
                 var url = $(event.target).closest('a').prop("href");
+                window.location = url;
+            })
+		});
+	}
+
+	/*
+	  - action: describes context of link (e.g., "contribution page")
+	  - category: exit (hard coded)
+	  - label: the URL of clicked link
+	*/
+	function handle_exit_click (event, action) {
+		console.log ("handle_exit_click");
+		event.preventDefault();
+		var url = $(event.target).closest('a').prop("href");
+		
+		gtag('event', action, {
+            'event_category' : 'exit',
+            'event_label' : url,
+            'value' : 0,
+            'event_callback':
+            createFunctionWithTimeout (function () {
                 window.location = url;
             })
 		});
