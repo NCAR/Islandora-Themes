@@ -13,13 +13,12 @@ $download_url = 'islandora/object/' . $islandora_object->id . '/datastream/PDF/d
 $custom_download_link = l('Download PDF', $download_url, array('attributes' => array('class' => array('islandora-pdf-link'))));
 
 // supplemental/related resources
-$funding_info =	openskydora_get_funding_info($variables['islandora_object']);
 $related_items = openskydora_get_related_items($variables['islandora_object']);
 $related_software = $related_items['software'];
 $related_datasets =  $related_items['datasets'];
 $related_documents =  $related_items['documents'];
 $related_other =  $related_items['other'];
-
+$fgs_createdDate_dt = get_solr_field($islandora_object, 'fgs_createdDate_dt');
 ?>
 
 <div class="islandora-citation-object islandora" vocab="http://schema.org/" prefix="dcterms: http://purl.org/dc/terms/" typeof="Article">
@@ -37,32 +36,42 @@ $related_other =  $related_items['other'];
       <div class="islandora-citation-content">
         <?php print $islandora_content; ?>
       </div>
-
  
       <!-- usage stats -->
       <?php  if (module_exists('islandora_usage_stats')): ?>
-        <!--//div class="openskydora-info usage-stats">
+        <div class="openskydora-info usage-stats">
           <?php
               module_load_include('inc', 'islandora_usage_stats', 'includes/db');
           ?>
-          &nbsp;<br/>
+		  <!--
           Times Viewed: <?php 
               /* using the view_count method from db.inc */
               print islandora_usage_stats_get_individual_object_view_count($islandora_object); ?>
-    
+		  -->
           <?php
               /* using the downloads_count method from db.inc */
               $ds_count = islandora_usage_stats_get_datastream_downloads_count($islandora_object); ?>
-    
+		  
           <?php if ($ds_count) : /* check the JPG and TIFF (OBJ) download counts */
-                  $times_downloaded = 0;
-                  if (array_key_exists('PDF', $ds_count)) $times_downloaded  = $ds_count['PDF'];  ?>
-              <br/>
-                  Times Downloaded: <?php print $times_downloaded; ?>
-  
-          <?php endif; ?> 
-  
-        </div//-->
+                $times_downloaded = 0;
+				$threshold_date_str = '2019-01-01';
+				$threshold_date = strtotime($threshold_date_str);
+				$created_date = strtotime($fgs_createdDate_dt);
+				if (array_key_exists('PDF', $ds_count)) $times_downloaded  = $ds_count['PDF'];  ?>
+
+		  <?php if ($times_downloaded > 0) : ?>
+		  <?php $times_str = $times_downloaded > 1 ? 'times' : 'time'; ?>
+                File Viewed:
+
+			    <?php if ($created_date < $threshold_date) : ?>
+				  <br/> <?php print $times_downloaded; ?> <?php print $times_str; ?> since <?php print $threshold_date_str; ?>
+				<?php else : ?>
+		          <?php print $times_downloaded; ?> <?php print $times_str; ?>
+				<?php endif; ?>    <!-- created .... --> 
+
+			  <?php endif; ?> <!-- times_downloa ..  -->
+		  <?php endif; ?> <!-- ds_count -->
+        </div>
       <?php endif; ?>  <!-- islandora_usage_stats -->
       <!-- end usage stats -->
       <?php if (isset($islandora_download_link)): ?>
