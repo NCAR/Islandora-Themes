@@ -248,6 +248,12 @@ function get_pid_from_path (s) {
 		$('.contribute-button').click (function (event) {
 			handle_exit_click(event, 'contribute-form');
 		})		
+
+		/* Track links in home page dynamic content */
+		$('.dynamic-content a').click (function (event) {
+			handle_home_dynamic_content_click(event);
+		});
+
 	});		 // wait for dom to load
 	
 	function instrument_search_form(form_id, search_term_selector, action, value=0) {
@@ -431,6 +437,47 @@ function get_pid_from_path (s) {
 		});
 	}
 
+	/*
+	  Track clicks on home page dynamic content. Clicks on altmetrics badges
+	  are exit links, the others simply navigate within the site.
+
+	  - action: home-page-dynamic-content-link
+	  - category: navigate OR exit
+	  - label: id of inclosing div.dynamic-content
+	*/
+	function handle_home_dynamic_content_click (event) {
+		event.preventDefault();
+		var event_label = $(event.target).closest('.dynamic-content').prop("id");
+		var event_action = 'home-page-dynamic-content-link';
+		var $link = $(event.target).closest('a');
+
+		// treat altmetrics-badge differently because it's an exit link
+		if ($link.prop("class") == 'altmetrics-badge') {
+			event_category = 'exit';
+			event_label += "-altmetrics-badge";
+		} else {
+			event_category = 'navigate';
+		}
+		
+		//log ('handle_home_dynamic_content_click: ' + event_label);
+		//log ("- category: " + event_category);
+		//log ("- event_action: " + event_action);
+
+
+		gtag('event', event_action, {
+            'event_category' : event_category,
+            'event_label' : event_label,
+            'value' : 0,
+            'event_callback':
+            createFunctionWithTimeout (function () {
+                var url = $link.prop("href");
+                window.location = url;
+            })
+		});
+
+	}
+
+	
 	/*
 	  - action: describes context of link (e.g., "contribution page")
 	  - category: exit (hard coded)
