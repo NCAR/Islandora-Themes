@@ -16,11 +16,12 @@ border: 0;
   position: absolute;
   width: 1px;
 }
-#dataset_more_btn, #software_more_btn, #document_more_btn, #other_more_btn, #contrib_more_btn, #authors_more_btn {
+#dataset_more_btn, #software_more_btn, #document_more_btn, #other_more_btn, #contrib_more_btn, #authors_more_btn, #subjects_more_btn {
    white-space: nowrap;
    border:none;
    padding:0;
-   background-color:transparent;
+   background-color:transparent; 
+   /* background-color:#DBE2E9;*/
     cursor: pointer;
     color: #d75900;
     font-size: 1rem;
