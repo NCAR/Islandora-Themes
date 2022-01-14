@@ -217,6 +217,29 @@ function get_pid_from_path (s) {
 		$('#other_more_btn').click(function (event) {
 			handle_more_less_btn_click(event, 'other');
 		});
+
+		/* Track the SHOW MORE button for subjects */
+		$('#subjects_more_btn').click(function (event) {
+			handle_more_less_btn_click(event, 'subjects');
+		});
+
+		/* Track a subject-term metadata click */
+		$('.subject-term>a').click(function (event) {
+			event.preventDefault();
+            var label = $(event.target).html();
+			var action = 'subject-metadata';
+			log ("label: " + label);
+
+            gtag('event', action, {
+                'event_category' : 'filter',
+                'event_label' : label,
+				'event_callback': createFunctionWithTimeout (function () {
+					var url = $(event.target).closest('a').prop("href");
+					window.location = url;
+				})
+            })
+
+        });
 		
 		/* Track the COPY CITATION button */
         $('.btn_copy_citation').click(function (event) {
