@@ -90,18 +90,27 @@
  */
 ?>
 
+<?php if (user_is_logged_in()): ?>
+
 <!-- Global site tag (gtag.js) - Google Analytics - inserted 8/1/2017, JLO -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?php print variable_get('openskydora_ga_id', '??') ?>"></script>
 <script>
-
     log ("GA CODE: <?php print variable_get('openskydora_ga_id', '??') ?>");
-    
+
+	if (typeof (gtag) === 'undefined') {
+       log ("GTAG is not defined");
+	} else {
+	   log ("GTAG is available " + (typeof (gtag)));
+	}
+
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', '<?php print variable_get('openskydora_ga_id', '??') ?>');
 </script>
+
+<?php endif; ?>
 
 <!-- TOP NAV -->
 <div id="header-wrap">
