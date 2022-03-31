@@ -5,21 +5,22 @@ html {
    margin:0;
    padding:0;
 }
-
+html, body {
+  font-size: 1rem;
+}
 body {
    margin:0;
    padding:21px 0 0 0;
    font-family: "UbuntuRegular","Lucida Grande",Verdana,Arial;
    color: #333333;
    background: url('../images/bg.jpg') repeat-x #E3E4E6;
-   font-size: 14px;
 }
 #skip-link {
   height:0px;
   width:0px;
 }
 
-/* Toolbars 
+/* Toolbars
 --------------------------------------------------*/
 
 /* Drupal Toolbar
@@ -99,7 +100,7 @@ body.toolbar-drawer.admin-menu-with-shortcuts #overlay-container {
   margin-top:8.0em;
 }
 
-/* Links Fonts and Text 
+/* Links Fonts and Text
 --------------------------------------------------*/
 a {
   text-decoration: none;
@@ -152,7 +153,7 @@ h3,
 h3 a{
   margin: 0 0 5px;
   font-family: "UbuntuRegular";
-  font-size: 16px;
+  font-size: 1rem;
   color: #003366;
   font-weight: normal;
 }
@@ -167,7 +168,7 @@ h4 a{
   line-height: 16px;
 }
 
-/* Layout 
+/* Layout
 --------------------------------------------------*/
 .clear-block:after {
   clear: both;
@@ -253,7 +254,7 @@ h4 a{
 #navigation ul li a {
   display:block;
   width:auto;
-  padding:12px 12px 10px 12px; 
+  padding:12px 12px 10px 12px;
   text-decoration: none;
   color:#DDDDDD;
   font-family: "UbuntuRegular","Lucida Grande",Verdana,Arial;
@@ -305,10 +306,10 @@ h4 a{
   margin: 0;
   width: 109px;
   font-family: "UbuntuBold";
-  font-size: 12px;
+  font-size: 0.8rem;
   color: #333333;
   padding: 5px;
-}  
+}
 .block-search input.form-submit,
 .block-google-cse input.form-submit {
   height: 28px;
@@ -318,7 +319,7 @@ h4 a{
   background-color:#FE9900;
   color:#FFFFFF;
   font-size:11px;
-  font-weight: bold; 
+  font-weight: bold;
   border:none;
 }
 
@@ -370,7 +371,7 @@ h4 a{
   width: auto;
   padding: 7px 12px 6px 12px;
   font-family: "UbuntuBold";
-  font-size: 12px;
+  font-size: 0.8rem;
   letter-spacing: 2px;
   color: #ffffff;
   text-transform: uppercase;
@@ -451,11 +452,11 @@ h4 a{
   margin-top: 0;
 }
 
-/* Fonts and Text 
+/* Fonts and Text
 --------------------------------------------------*/
 .title {
   font-family: "UbuntuBold";
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: normal;
   line-height: 19px;
   margin: 0;
@@ -500,7 +501,7 @@ h4 a{
   list-style: none;
   margin: 0 0 5px;
   font-family: "UbuntuRegular";
-  font-size: 14px;
+  font-size: 0.9rem;
   color: #FF9900;
   font-weight: normal;
   line-height: 15px;
@@ -593,14 +594,14 @@ h4 a{
 .breadcrumbs {
   float: left;
   font-family: "UbuntuRegular";
-  font-size: 12px;
+  font-size: 0.8rem;
   color: #333333;
   font-weight: normal;
   margin: 1px 0 0;
 }
 .breadcrumbs a{
   font-family: "UbuntuRegular";
-  font-size: 12px;
+  font-size: 0.8rem;
   color: #025081;
   font-weight: normal;
 }
@@ -870,7 +871,7 @@ margin: 0;
 .italic {
   margin: 20px 0 0;
   font-family: "UbuntuItalic";
-  font-size: 16px;
+  font-size: 1rem;
   color: #ffffff;
   padding: 0 0;
 }
@@ -892,7 +893,7 @@ margin: 0;
 .library {
   margin: 15px 0 0;
   font-family: "UbuntuItalic";
-  font-size: 16px;
+  font-size: 1rem;
   color: #FF9900;
   padding: 0 0 5px;
 }
@@ -925,7 +926,7 @@ margin: 0;
 }
 .footercopy {
   font-family: "UbuntuRegular";
-  font-size: 12px;
+  font-size: 0.8rem;
   color: #999999;
   float: left;
 }
@@ -944,7 +945,7 @@ margin: 0;
 }
 .footernav a{
   font-family: "UbuntuRegular";
-  font-size: 14px;
+  font-size: 0.9rem;
   color: #A82626;
 }
 .footernav ul li a:hover{
@@ -956,7 +957,7 @@ margin: 0;
   padding: 0;
   color:#666666;
   font-family: "UbuntuRegular","Lucida Grande",Verdana,Arial;
-  font-size: 14px;
+  font-size: 0.9rem;
 }
 .footernav .content{
   margin-bottom: 0;
@@ -969,7 +970,7 @@ margin: 0;
 }
 .footernav #orgFooter a {
   font-family: "UbuntuRegular";
-  font-size: 14px;
+  font-size: 0.9rem;
   color: #A82626;
   padding:0 10px;
 }

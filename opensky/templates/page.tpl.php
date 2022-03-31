@@ -157,7 +157,7 @@ if (@$nsf_logo){
   print '<div class="nsf-logo"><img src="'.base_path().$path_to_theme.'/images/nsf.png"/></div><!-- .slogan -->';
 }
 elseif (@$slogan_background_image){
-  print '<div class="slogan"><img src="'.base_path().$path_to_theme.'/images/slogan.png"/></div><!-- .slogan -->';
+  print '<div class="slogan"><img alt="Research, services, resources" src="'.base_path().$path_to_theme.'/images/slogan.png"/></div><!-- .slogan -->';
 }
 elseif (@$site_slogan){
   ?>
