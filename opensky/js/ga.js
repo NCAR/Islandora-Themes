@@ -9,7 +9,7 @@ usage:
   }});
 
 see the breadcrumbs handler
-
+see google sheet "Opensky Google Analytics Event Labeling Schemes" for overview of events, actions and labels tracked by ga
 */
 function createFunctionWithTimeout(callback, opt_timeout) {
   var called = false;
@@ -280,7 +280,66 @@ function get_pid_from_path (s) {
 			$('.dynamic-content a').click (function (event) {
 				handle_home_dynamic_content_click(event);
 			});
+
+			/* Track the category control toggle for collections browse page 
+			   The click is handled in javascript (openskydora:collections-decorator).
+			   That click handler calls "toggle", which triggers an event, which we 
+			   can detect here.
+			   NOTE: we use the document to trigger and listen for the event, since the 
+			   actual control elements may not exist when this code is executed.
+			 */
+
+			$(document).on('collection-category-toggle', function (event, data) {
+                gtag('event', event.type, {
+					'event_category' : 'toggle',
+					'event_label' : data.collection,
+					'value' : data.state == 'open'? 1 : 0
+				});
+            });
+
+			/* Track clicks on the collections A-Z list. "collections-a2z-index"
+			   event trigger defined in collections-decorator
+			*/
+			$(document).on('collections-a2z-index', function (event, data) {
+				gtag('event', event.type, {
+					'event_category' : 'filter',
+					'event_label' : data.letter,
+					'event_callback': createFunctionWithTimeout (function () {
+						window.location = data.url;
+					})
+				});
+			});
+
+			/* Track clicks on collection links from both category and a2z collections
+			   pages.
+			*/
+			$(document).on('collections-browse-link', function (event, data) {
+				var action = "collection-link-"+data.mode;
+				gtag('event', action, {
+					'event_category' : 'navigate',
+					'event_label' : data.collection,
+					'event_callback': createFunctionWithTimeout (function () {
+						window.location = data.url;
+					})
+				});
+			});
 		}		
+
+		/* Track collection view mode toggle (a2z | categories) */
+		$('.islandora-basic-collection-display-switch a').click (function (event) {
+			event.preventDefault();
+			var $link = $(event.target);
+			var mode = $link.prop('class').includes('list') ? 'a2z' : 'categories';
+			gtag('event', "collections-view-mode", {
+				'event_category' : 'toggle',
+				'event_label' : mode,
+				'event_callback': createFunctionWithTimeout (function () {
+					window.location = $link.prop('href');
+				})
+			});
+
+		});
+
 	});		 // wait for dom to load
 	  
 	function instrument_search_form(form_id, search_term_selector, action, value=0) {
