@@ -323,22 +323,22 @@ function get_pid_from_path (s) {
 					})
 				});
 			});
-		}		
 
-		/* Track collection view mode toggle (a2z | categories) */
-		$('.islandora-basic-collection-display-switch a').click (function (event) {
-			event.preventDefault();
-			var $link = $(event.target);
-			var mode = $link.prop('class').includes('list') ? 'a2z' : 'categories';
-			gtag('event', "collections-view-mode", {
-				'event_category' : 'toggle',
-				'event_label' : mode,
-				'event_callback': createFunctionWithTimeout (function () {
-					window.location = $link.prop('href');
-				})
+			/* Track collection view mode toggle (a2z | categories) */
+			$('.islandora-basic-collection-display-switch a').click (function (event) {
+				event.preventDefault();
+				var $link = $(event.target);
+				var mode = $link.prop('class').includes('list') ? 'a2z' : 'categories';
+				gtag('event', "collections-view-mode", {
+					'event_category' : 'toggle',
+					'event_label' : mode,
+					'event_callback': createFunctionWithTimeout (function () {
+						window.location = $link.prop('href');
+					})
+				});
+				
 			});
-
-		});
+		}		
 
 	});		 // wait for dom to load
 	  

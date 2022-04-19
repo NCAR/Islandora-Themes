@@ -90,7 +90,7 @@
  */
 ?>
 
-<?php if (user_is_logged_in()): ?>
+<?php if (!user_is_logged_in()): ?>
 
 <!-- Global site tag (gtag.js) - Google Analytics - inserted 8/1/2017, JLO -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?php print variable_get('openskydora_ga_id', '??') ?>"></script>
