@@ -35,6 +35,8 @@ function opensky_breadcrumb($variables) {
 
 function opensky_preprocess_page (&$variables, $hook) {
     // drupal_set_message ('PREPROCESSING Page');
+    $variables['show_content_alert'] = openskydora_show_content_alert();
+    // dsm($variables);
 }
 
 /**

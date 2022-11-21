@@ -202,7 +202,6 @@ elseif (@$site_slogan){
 <div id="wrap">
     <div id="container" class="clear-block">
 
-
         <?php if (@$breadcrumb || @atmos_print_content_type_name($node)): ?>
             <div class="internal-header" class="clear-block">
                 <div class="breadcrumbs"><?php print $breadcrumb; ?></div>
@@ -239,6 +238,14 @@ elseif (@$site_slogan){
                 </div> <!-- /#help -->
             <?php endif; ?>
 
+			<?php if ($show_content_alert): ?>
+			<div id="content-alert">
+			  This material may contain content that represents attitudes that
+			  do not align with NCAR’s Values.
+			  <a href="https://www.archives.ucar.edu/about#alert">View more information.</a>
+			</div>
+			<?php endif; ?>
+			
             <?php
 
                 // Some content types intentinally strip $node->title in the node-CONTENT_TYPE.tpl.php file.
@@ -264,7 +271,7 @@ elseif (@$site_slogan){
 
             <a id="main-content"></a>
             <div class="clear-block">
-                <?php print render($page['content'])?>
+			  <?php print render($page['content'])?>
             </div>
             <div class="feed_icons">
                 <?php print $feed_icons; ?>

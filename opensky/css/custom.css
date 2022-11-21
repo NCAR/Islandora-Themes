@@ -155,6 +155,11 @@ fieldset.collapsible {
 
 /* end sharon additions */
 
+#content-alert {
+	padding:30px;
+	margin-bottom:20px;
+	background:#C3D7EE;
+}
 
 /* layout */
 .box_150 {
