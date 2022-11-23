@@ -156,9 +156,13 @@ fieldset.collapsible {
 /* end sharon additions */
 
 #content-alert {
-	padding:30px;
-	margin-bottom:20px;
+	padding:5px;
+	margin:0px;
 	background:#C3D7EE;
+	position:relative;
+	top: -10px;
+	font-size:.8rem;
+	text-align:center;
 }
 
 /* layout */

@@ -213,6 +213,14 @@ elseif (@$site_slogan){
 
     <div id="center-wrapper" class="clear-block">
 
+		<?php if ($show_content_alert): ?>
+		    <div id="content-alert">
+			  This material may contain content that represents attitudes that
+			  do not align with NCAR’s Values.
+			  <a href="https://www.archives.ucar.edu/about#alert">View more information.</a>
+			</div>
+		<?php endif; ?>
+	  
         <?php if (@$page['highlighted']): ?>
             <div id="highlighted">
                 <?php print render($page['highlighted']); ?>
@@ -237,14 +245,6 @@ elseif (@$site_slogan){
                     <?php print render($page['help']); ?>
                 </div> <!-- /#help -->
             <?php endif; ?>
-
-			<?php if ($show_content_alert): ?>
-			<div id="content-alert">
-			  This material may contain content that represents attitudes that
-			  do not align with NCAR’s Values.
-			  <a href="https://www.archives.ucar.edu/about#alert">View more information.</a>
-			</div>
-			<?php endif; ?>
 			
             <?php
 
