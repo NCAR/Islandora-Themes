@@ -215,7 +215,7 @@ elseif (@$site_slogan){
 
 		<?php if ($show_content_alert): ?>
 		    <div id="content-alert">
-			  This material may contain content that represents attitudes that
+              Content alert: this material may contain content that represents attitudes that
 			  do not align with NCAR’s Values.
 			  <a href="https://www.archives.ucar.edu/about#alert">View more information.</a>
 			</div>
