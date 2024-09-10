@@ -216,7 +216,7 @@ elseif (@$site_slogan){
          <div id="migration-alert">
 	   <b style="color:black">Announcement:</b> OpenSky is migrating to a new platform during the week
 	   of Sept. 23, 2024. During that week, you may experience minor service
-	   disruptions. For more detail, please see our <a href="/node/16">Migration FAQ</a>
+	   disruptions. For more detail, please see our <a href="/migration_faq">Migration FAQ</a>
 	   page. <br/>
 	   Questions? Email opensky@ucar.edu
 	 </div>
