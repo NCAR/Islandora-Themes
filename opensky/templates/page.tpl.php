@@ -213,7 +213,16 @@ elseif (@$site_slogan){
 
     <div id="center-wrapper" class="clear-block">
 
-		<?php if ($show_content_alert): ?>
+         <div id="migration-alert">
+	   <b style="color:black">Announcement:</b> OpenSky is migrating to a new platform during the week
+	   of Sept. 23, 2024. During that week, you may experience minor service
+	   disruptions. For more detail, please see our <a href="/node/16">Migration FAQ</a>
+	   page. <br/>
+	   Questions? Email opensky@ucar.edu
+	 </div>
+
+      
+        <?php if ($show_content_alert): ?>
 		    <div id="content-alert">
               Content alert: this material may contain content that represents attitudes that
 			  do not align with NCAR’s Values.

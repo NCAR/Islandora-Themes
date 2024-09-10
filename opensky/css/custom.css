@@ -165,6 +165,20 @@ fieldset.collapsible {
 	text-align:center;
 }
 
+#migration-alert {
+	padding:20px;
+	background:#FFEEC9;
+	position:relative;
+	top: -10px;
+	font-size:1.1rem;
+	text-align:left;
+	margin: 0;
+}
+
+.messages.error {
+    display:none;
+}
+
 /* layout */
 .box_150 {
 	width:150px !important;	 
